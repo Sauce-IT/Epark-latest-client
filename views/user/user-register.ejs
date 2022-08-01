@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sign up</title>
+
+    <!-- Font Icon -->
+    <link
+      rel="stylesheet"
+      href="/fonts/material-icon/css/material-design-iconic-font.min.css"
+    />
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/css/login-signup.css" />
+  </head>
+  <body>
+    <div class="main">
+      <!-- form -->
+      <section class="password">
+        <div class="container">
+          <div class="password-content">
+            <div class="password-form">
+              <h2 class="form-title">Hey there! First time visitor?</h2>
+              <p>Sign up below and start your reservation now !</p>
+              <br />
+              <form
+                class="register-form"
+                action="/api/register-user"
+                method="post"
+              >
+                <div class="form-group">
+                  <label for="your_name"
+                    ><i class="zmdi zmdi-account material-icons-name"></i
+                  ></label>
+                  <input
+                    type="text"
+                    name="user_name"
+                    id="user_name"
+                    required="_required"
+                    placeholder="Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Mobile">
+                    <i class="zmdi zmdi-phone material-icons-name"></i
+                  ></label>
+                  <input
+                    type="number"
+                    name="user_mobile"
+                    id="user_mobile"
+                    required="_required"
+                    placeholder="Mobile No."
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="pass"
+                    ><i class="zmdi zmdi-email material-icons-name"></i
+                  ></label>
+                  <input
+                    type="text"
+                    name="user_email"
+                    id="user_email"
+                    required="_required"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="pass"
+                    ><i class="zmdi zmdi-lock-outline"></i
+                  ></label>
+                  <input
+                    type="password"
+                    name="user_password"
+                    id="user_password"
+                    required="_required"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="form-group form-button">
+                  <input
+                    type="submit"
+                    name="reg_user"
+                    id="reg_user"
+                    class="form-submit"
+                    href="javascript:{}"
+                    onclick="document.getElementById('login-form').submit();"
+                  />
+                </div>
+              </form>
+            </div>
+            <div class="password-image">
+              <figure>
+                <img src="/images/signup-image.jpg" alt="sign up image" />
+              </figure>
+              <a href="/user-login">Already a user? Log in here</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

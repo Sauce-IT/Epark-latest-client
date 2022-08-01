@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>E-Park Parking</title>
+  </head>
+  <body>
+    <!-- top navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-navbar fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#sidebar"
+          aria-controls="offcanvasExample"
+        >
+          <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
+        </button>
+        <a
+          class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold"
+          href="#"
+          >E-Park-Admin</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#topNavBar"
+          aria-controls="topNavBar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="topNavBar">
+          <form class="d-flex ms-auto my-3 my-lg-0">
+            <div class="input-group">
+              <!-- <input
+                class="form-control"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search"></i>
+              </button> -->
+            </div>
+          </form>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle ms-2"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-person-fill"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- <li><a class="dropdown-item" href="#">Profile</a></li> -->
+                <li>
+                  <a class="dropdown-item" href="/">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- top navigation bar -->
+    <!-- offcanvas -->
+    <div
+      class="offcanvas offcanvas-start sidebar-nav bg-light"
+      tabindex="-1"
+      id="sidebar"
+    >
+      <div class="offcanvas-body p-0">
+        <nav class="navbar-light">
+          <ul class="navbar-nav">
+            <li>
+              <a href="/admin-dashboard" class="nav-link px-3 active">
+                <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
+            <li>
+              <div class="text-muted small fw-bold text-uppercase px-3">
+                Management
+              </div>
+            </li>
+            <li>
+              <a href="/manage-parking" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-graph-up"></i></span>
+                <span>Manage Parking</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/manage-booking" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-table"></i></span>
+                <span>Manage Booking</span>
+              </a>
+            </li>
+            <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
+
+            <li>
+              <div class="text-muted small fw-bold text-uppercase px-3">
+                User settings
+              </div>
+            </li>
+            <li>
+              <a href="/user-info" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-person-circle"></i></span>
+                <span>Clerk info</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/user-logs" class="nav-link px-3">
+                <span class="me-2"
+                  ><i class="bi bi-person-check-fill"></i
+                ></span>
+                <span>User Logs</span>
+              </a>
+            </li>
+            <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
+
+            <!-- <li>
+              <div class="text-muted small fw-bold text-uppercase px-3">
+                Website Settings
+              </div>
+            </li> -->
+            <!-- <li>
+              <a href="/settings" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-gear-fill"></i></span>
+                <span>Settings</span>
+              </a>
+            </li> -->
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Change peso rate/type</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <form  id="rate-form" action="/api/change-rate" method="post">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label class="form-label" required for="rate">Rate:</label>
+                  <input type="number" name="rate" id="rate" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" required for="rate">Type:</label>
+                  <select name="type" id="type"  class="form-control">
+                    <option value="Fixed">Fixed</option>
+                    <option value="Hourly">Hourly</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="submit"class="btn btn-danger"data-bs-dismiss="modal" href="javascript:{}" onclick="document.getElementById('rate-form').submit();">
+                  Cancel
+                </button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<!-- end of modal -->
+    <!-- offcanvas -->
+    <main class="mt-5 pt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Manage Parking</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-header">
+                  <% for(var i = 0; i < rates.length; i++) {%>
+  
+                    <form  id="addslot-form" action="/api/Add-slot" method="post">
+                    <span style="font-weight: bold">Rate: </span>
+                    <%= rates[i].rate_price %> pesos
+                    <span style="font-weight: bold">Type: </span>
+                    <%= rates[i].rate_type %>
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Change</a>
+            
+                      <button  href="javascript:{}" onclick="document.getElementById('addslot-form').submit();" class="btn btn-primary"  style="float: right;">Add</button>
+                    </form>    
+
+                  <% } %>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table
+                    id="example"
+                    class="table table-striped data-table"
+                    style="width: 100%"
+                  >
+                  <thead>
+                    <tr>
+                      <th>Slot</th>
+                      <th>Availability</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for(var i = 0; i < parkings.length; i++) {%>
+
+                    <tr>
+                      <td><%= parkings[i].Slot_id %></td>								
+                      <% if(parkings[i].Availability == 'Maintenance'){ %>
+                        <td>Inactive</td>
+                      <% }else { %>
+                        <td>Active</td>
+                      <% } %>
+                      <td><%= parkings[i].Availability %> </td>
+                      
+                      <% if(parkings[i].Availability == 'Maintenance'){ %>
+                        <td>
+                          <form  id="active-form" action="/api/changt-to-active" method="post">
+                              <input name="slot_id"  type="text" value="<%= parkings[i].Slot_id %>" hidden>
+                              <button  href="javascript:void(0)" onclick="document.getElementById('active-form').submit();" class="btn btn-primary"  style="width: 85px;">Active</button>
+                          </form>    
+                        </td>
+                      <% }else if(parkings[i].Availability == 'Reserved') { %>
+                          <td>In progress</td>
+                      <% }else{ %>
+                        <td>
+                          <form  id="active-form" action="/api/changt-to-inactive" method="post">
+                            <input  name="slot_id" type="text" value="<%= parkings[i].Slot_id %>" hidden>
+                            <button class="btn btn-danger" href="javascript:void(0)" onclick="document.getElementById('active-form').submit();" >Inactive</button>
+                          </form>    
+                        </td>
+                      <% } %>
+                    <% } %>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Slot</th>
+                        <th>Availability</th>
+                        <th>Action</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
+    <script src="/js/jquery-3.5.2.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap5.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

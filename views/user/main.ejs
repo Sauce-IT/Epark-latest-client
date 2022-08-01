@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>E-Park</title>
+
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <!-- Bootstrap 4.5 CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="col-12 text-right">
+          <p><a href="#">E-Park - " Park before arriving ! "</a></p>
+        </div>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <!-- Navigation -->
+
+    <nav class="navbar bg-light navbar-light navbar-expand-lg" class="navbar1">
+      <div class="container">
+        <a href="/home" class="navbar-brand"
+          ><img src="/images/e-park-logo3.png" alt="Logo" title="Logo"
+        /></a>
+
+        <button
+          class="navbar-inverse"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ui class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#HowItWorks" class="nav-link">How it works</a>
+            </li>
+            <li class="nav-item">
+              <a href="#ParkingSlots" class="nav-link">Parking Slots</a>
+            </li>
+            <li class="nav-item">
+              <a href="#About" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="#Contact" class="nav-link">Contact</a>
+            </li>
+          </ui>
+          <ui class="navbar-nav ml-auto">
+            <li class="nav-item"></li>
+            <li class="nav-item"></li>
+            <li class="nav-item"></li>
+            <li class="nav-item"></li>
+          </ui>
+
+          <a class="btn btn-md nav-btn" href="/user-profile">Profile</a>
+
+          <a class="btn btn-outline-dark btn-md active nav-btn" href="/logout"
+            >Logout</a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- End Navigation -->
+
+    <!-- Home -->
+    <div class="container">
+      <section class="home" id="home">
+        <div class="text">
+          <h1><span>Looking</span> for <br />car parking reservation</h1>
+          <p>
+            Schedule and organize your reservation.<br />
+            Sign up and book for details.
+          </p>
+          <% if(userbook == null ) {%>
+          <a
+            href="#"
+            class="btn btn-outline-dark btn-md submit-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal4"
+            >Reserve now</a
+          >' <% }%> <% if(userbook != null ) {%> <% for(var i = 0; i <
+          userbook.length; i++) {%> <% if(userbook[i].book_status == 'expired'
+          || userbook[i].book_status == 'exited' ) {%>
+          <a
+            href="#"
+            class="btn btn-outline-dark btn-md submit-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal4"
+            >Reserve now</a
+          >' <% }else {%>
+          <a
+            href="#"
+            class="btn btn-outline-dark btn-md submit-btn"
+            data-bs-toggle="modal"
+            onclick="countdown()"
+            data-bs-target="#myModal2"
+            >View Reservation</a
+          >
+          <% }%> <% }%> <% }%>
+        </div>
+      </section>
+    </div>
+    <!-- modal 1 contact-->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Contact Us</h5>
+            <button
+              type="button"
+              class="btn-close-white"
+              data-bs-dismiss="modal"
+            >
+              x
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label required">Name</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label required">Email</label>
+                <input type="email" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label required"
+                  >Type ypur message here</label
+                >
+                <textarea class="form-control"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-outline-dark btn-md submit-btn"
+            >
+              Submit
+            </button>
+            <button
+              type="submit"
+              class="btn btn-outline-dark btn-md submit-btn"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal 2 view my reservation-->
+    <div class="modal" id="myModal2">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Your Reservation</h5>
+            <button
+              type="button"
+              class="btn-close-white"
+              data-bs-dismiss="modal"
+              onclick="stopcountdown()"
+            >
+              x
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- <form> -->
+            <div class="mb-3">
+              <label class="form-label required">Name</label>
+              <input
+                type="text"
+                value="<%= currentUsers.name %>"
+                id="user_Name"
+                class="form-control"
+                disabled
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label required">Email</label>
+              <input
+                type="text"
+                value="<%= currentUsers.email %>"
+                id="user_email"
+                class="form-control"
+                disabled
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label required">Mobile No.</label>
+              <input
+                type="number"
+                value="<%= currentUsers.mobile %>"
+                id="user_mobile"
+                class="form-control"
+                disabled
+              />
+            </div>
+            <% if(userbook != null ) {%> <% for(var i = 0; i < userbook.length;
+            i++) {%>
+
+            <div class="mb-3">
+              <label class="form-label required">Plate code</label>
+              <input
+                value="<%= userbook[i].plate %>"
+                class="form-control"
+                disabled
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label required">Slots Registered:</label>
+              <input
+                value="<%= userbook[i].slot_id %>"
+                id="slot_id"
+                class="form-control"
+                disabled
+              />
+              <input
+                value="<%= userbook[i].booking_id %>"
+                name="booking_id"
+                id="booking_id"
+                hidden
+              />
+              <input
+                value="<%= userbook[i].paid_date %>"
+                name="status"
+                id="status"
+                hidden
+              />
+              <input
+                value="<%= userbook[i].book_status %>"
+                name="book_s"
+                id="book_s"
+                hidden
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label required">Total:</label>
+
+              <% if(rates[0].rate_type !== 'Fixed') {%>
+              <input
+                value="<%= userbook[i].total_price %>"
+                class="form-control"
+                disabled
+              />
+              <% }else{ %>
+              <input
+                value="<%= rates[0].rate_price %>"
+                class="form-control"
+                disabled
+              />
+              <% } %>
+            </div>
+            <% if(userbook[i].book_status == 'paid' ) { %> <%
+            if(userbook[i].date_entry != null){ %>
+            <div class="mb-4">
+              <label class="form-label">Qr code given by clerk: </label>
+              <div id="qrcode">
+                <center>
+                  <img
+                    src="images/thumbnail.png"
+                    style="width: 200px; height: 200px"
+                  />
+                </center>
+              </div>
+            </div>
+            <% }else{ %>
+            <div class="mb-3">
+              <label class="form-label">Expires before: </label>
+              <h6 id="counter">30:00</h6>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Qr code given by clerk: </label>
+              <div id="qrcode">
+                <center>
+                  <img
+                    src="images/thumbnail.png"
+                    style="width: 200px; height: 200px"
+                  />
+                </center>
+              </div>
+            </div>
+            <% } %> <% }else{ %>
+            <div class="mb-4">
+              <label class="form-label">
+                Send payment to this no.: <br />GCash: 09166532958 E-Park2022
+                <br />
+                Paymaya:
+                <br />
+                And wait for confirmation</label
+              >
+              <div>
+                <center>
+                  <img
+                    src="images/thumbnail.png"
+                    style="width: 200px; height: 200px"
+                  />
+                </center>
+              </div>
+            </div>
+            <!-- </form> -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-md submit-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#myModal3"
+              >
+                Cancel booking
+              </button>
+            </div>
+            <% }%> <% }%> <% }%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal 3 cancel book -->
+    <div class="modal" id="myModal3">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Are you sure you want to cancel this booking?
+            </h5>
+            <button
+              type="button"
+              class="btn-close-white"
+              data-bs-dismiss="modal"
+            >
+              x
+            </button>
+          </div>
+          <form
+            id="cancel-form"
+            action="/api/user-cancel-booking"
+            method="post"
+          >
+            <% if(userbook != null ) {%> <% for(var i = 0; i < userbook.length;
+            i++) {%>
+
+            <input
+              id="booking_id"
+              name="booking_id"
+              value="<%= userbook[i].booking_id %>"
+              hidden
+            />
+            <div class="modal-footer">
+              <!-- getReservation function -->
+              <button
+                href="javascript:{}"
+                onclick="document.getElementById('cancel-form').submit();"
+                class="btn btn-outline-dark btn-md submit-btn"
+                data-bs-dismiss="modal"
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-md submit-btn"
+                data-bs-dismiss="modal"
+              >
+                No
+              </button>
+            </div>
+            <% }%> <% }%>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal 4 reserve now -->
+    <div class="modal" id="myModal4">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Reserve a parking slot</h5>
+            <button
+              type="button"
+              class="btn-close-white"
+              data-bs-dismiss="modal"
+            >
+              x
+            </button>
+          </div>
+          <div class="modal-body">
+            <form
+              id="add-reservation"
+              action="/api/add-reservation"
+              method="post"
+            >
+              <div class="mb-3">
+                <label class="form-label required">Name</label>
+                <input
+                  type="text"
+                  value="<%= currentUsers.name %>"
+                  id="Name"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label required">Email</label>
+                <input
+                  type="text"
+                  value="<%= currentUsers.email %>"
+                  id="email"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label required">Mobile No.</label>
+                <input
+                  type="number"
+                  value="<%= currentUsers.mobile %>"
+                  id="mobile"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label required">Plate code</label>
+                <input
+                  type="text"
+                  name="plate"
+                  id="plate"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <% for(var i = 0; i < rates.length; i++) {%>
+              <div class="mb-3" id="Rating">
+                Rate:<input
+                  name="rate"
+                  id="rate"
+                  type="number"
+                  value="<%= rates[i].rate_price %>"
+                  class="form-control"
+                  style="width: 40%"
+                  disabled
+                />
+                Type:<input
+                  type="text"
+                  value="<%= rates[i].rate_type %>"
+                  class="form-control"
+                  id="type"
+                  style="width: 40%"
+                  disabled
+                />
+              </div>
+
+              <% if(rates[i].rate_type != 'Fixed') {%>
+              <div class="mb-3" id="hourly">
+                <label class="form-label required"
+                  >How much time would you park?</label
+                >
+                <select name="time" id="time" oninput="myFunction()" required>
+                  <option>0</option>
+                  <option type="number" value="1">1</option>
+                  <option type="number" value="2">2</option>
+                  <option type="number" value="3">3</option>
+                  <option type="number" value="4">4</option>
+                  <option type="number" value="5">5</option>
+                  <option type="number" value="6">6</option>
+                  <option type="number" value="7">7</option>
+                  <option type="number" value="8">8</option>
+                  <option type="number" value="9">9</option>
+                  <option type="number" value="10">10</option>
+                  <option type="number" value="11">11</option>
+                  <option type="number" value="12">12</option>
+                  <option type="number" value="13">13</option>
+                  <option type="number" value="14">14</option>
+                  <option type="number" value="15">15</option>
+                  <option type="number" value="16">16</option>
+                  <option type="number" value="17">17</option>
+                  <option type="number" value="18">18</option>
+                  <option type="number" value="19">19</option>
+                  <option type="number" value="20">20</option>
+                  <option type="number" value="21">21</option>
+                  <option type="number" value="22">22</option>
+                  <option type="number" value="23">23</option>
+                  <option type="number" value="24">24</option>
+                </select>
+              </div>
+              <% }else{%>
+              <input
+                type="text"
+                value="<%= rates[i].rate_price %>"
+                class="form-control"
+                id="type"
+                style="width: 40%"
+                hidden
+              />
+              <% }%>
+
+              <div class="mb-3">
+                <label class="form-label required">total</label>
+
+                <% if(rates[i].rate_type != 'Fixed') {%>
+                <input
+                  type="number"
+                  name="totalprice"
+                  id="totalprice"
+                  class="form-control"
+                  disabled
+                />
+                <%}else{%>
+                <input
+                  type="number"
+                  name="totalprice"
+                  id="totalprice"
+                  class="form-control"
+                  value="<%= rates[i].rate_price %>"
+                  disabled
+                />
+                <%}%>
+              </div>
+
+              <% }%>
+
+              <div class="mb-3">
+                <label class="form-label required"
+                  >Available Parking Slots</label
+                >
+                <select name="reserve_slot" id="reserve_slot">
+                  <% for(var i = 0; i < slots.length; i++) {%> <%
+                  if(slots[i].Availability == 'Available') {%>
+                  <option><%= slots[i].Slot_id %></option>
+                  <% }%> <% }%>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="submit"
+                  class="btn btn-outline-dark btn-md submit-btn"
+                  href="javascript:{}"
+                  onclick="document.getElementById('add-reservation').submit();"
+                >
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-dark btn-md submit-btn"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Carousel -->
+
+    <div
+      id="carousel"
+      class="carousel slide"
+      data-ride="carousel"
+      data-interval="6500"
+    >
+      <!-- Carousel Content -->
+      <div class="carousel-inner">
+        <!--first carousel-->
+        <div class="carousel-item active">
+          <img src="/images/carousel/1.jpg" alt="" class="w-100" />
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-8 bg-custom d-none d-md-block py-3 px-0">
+                  <h1>E-Park</h1>
+                  <div
+                    class="border-top border-primary w-50 mx-auto my-3"
+                  ></div>
+                  <!-- <h3 class="pb-3">Park Reservation</h3> -->
+                  <a href="#" class="btn btn-danger btn-lg mr-2"
+                    >Not a user yet? Sign up here</a
+                  >
+                  <a href="#" class="btn btn-primary btn-lg ml-2">Start now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--second carousel-->
+        <div class="carousel-item">
+          <img src="/images/carousel/2.jpg" alt="" class="w-100" />
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row justify-content-end text-right">
+                <div class="col-5 bg-custom d-none d-lg-block py-3 px-0 pr-3">
+                  <p class="lead pb-3">Book your car park and save up to 70%</p>
+                  <a href="#" class="btn btn-primary btn-lg">Start now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--third carousel-->
+        <div class="carousel-item">
+          <img src="/images/carousel/3.jpg" alt="" class="w-100" />
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row justify-content-start text-left">
+                <div class="col-7 bg-custom d-none d-lg-block py-3 px-0 pl-3">
+                  <h3 class="pb-3">Choose a car park</h3>
+                  <p class="lead">BOOK AND START SAVING ! !</p>
+                  <a href="#" class="btn btn-primary btn-lg">Start now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Carousel Content -->
+
+      <!-- Previous & Next Buttons -->
+      <a
+        href="#carousel"
+        class="carousel-control-prev"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="fas fa-chevron-left fa-2x"></span
+      ></a>
+
+      <a
+        href="#carousel"
+        class="carousel-control-next"
+        role="button"
+        data-slide="next"
+      >
+        <span class="fas fa-chevron-right fa-2x"></span
+      ></a>
+
+      <!-- End Previous & Next Buttons -->
+    </div>
+    <!-- End Image Carousel -->
+
+    <!-- Main Page Heading -->
+    <div class="col-12 text-center mt-5">
+      <p class="lead">Online Car Park Reservation</p>
+      <h1 class="text-dark pt-4" id="HowItWorks">How it works</h1>
+      <div class="border-top border-primary w-25 mx-auto my-3"></div>
+      <p class="lead">3 Easy steps.</p>
+    </div>
+
+    <!-- Three Column Section -->
+    <div class="container">
+      <div class="row my-5">
+        <div class="col-md-4 my-4">
+          <img src="/images/1.1.jpg" alt="" class="w-100" />
+          <h4 class="my-4">"1 Find your car park."</h4>
+          <p>Submit a reservation.</p>
+          <!-- <a href="#" class="btn btn-outline-dark btn-md">Start now</a> -->
+        </div>
+
+        <div class="col-md-4 my-4">
+          <img src="/images/2.2.jpg" alt="" class="w-100" />
+          <h4 class="my-4">"2 Compare, book!."</h4>
+          <p>See prices, distance, customer reviews.</p>
+          <!-- <a href="#" class="btn btn-outline-dark btn-md">Start now</a> -->
+        </div>
+
+        <div class="col-md-4 my-4">
+          <img src="/images/3.1.jpg" alt="" class="w-100" />
+          <h4 class="my-4">"3 And park !."</h4>
+          <p>
+            Upon arrival, just show your reservation QR code in the car park.
+            There is no need to print anything out! All your bookings, in our
+            care.
+          </p>
+          <!-- <a href="#" class="btn btn-outline-dark btn-md">Start now</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- End Three Column Section -->
+
+    <!-- Navbar -->
+    <a class="navbar bg-primary sticky-top gradient"> </a>
+
+    <!-- Start Fixed Background IMG -->
+    <div class="fixed-background" id="#ParkingSlots">
+      <div class="row text-light py-5">
+        <div class="col-12 text-center">
+          <!-- <h1>QR code initial form</h1>
+				<h3 class="py-4">dito sana???</h3> -->
+        </div>
+      </div>
+
+      <div class="fixed-wrap">
+        <div class="fixed"></div>
+      </div>
+    </div>
+    <section>
+      <div class="table-responsive col-lg-6" style="margin: auto">
+        <table
+          class="table table-light table-striped table-hover table-borderless"
+        >
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Slot #</th>
+              <th scope="col">Availability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i = 0; i < slots.length; i++) {%>
+            <tr>
+              <th scope="row"><%= slots[i].Slot_id %></th>
+              <% if(slots[i].Availability == 'Available') {%>
+              <td>
+                <a href="#" class="btn btn-success" style="width: 130px"
+                  ><%= slots[i].Availability %></a
+                >
+              </td>
+              <% }%> <% if(slots[i].Availability == 'Reserved') {%>
+              <td>
+                <a href="#" class="btn btn-warning" style="width: 130px"
+                  ><%= slots[i].Availability %></a
+                >
+              </td>
+              <% }%> <% if(slots[i].Availability == 'Occupied') {%>
+              <td>
+                <a href="#" class="btn btn-primary" style="width: 130px"
+                  ><%= slots[i].Availability %></a
+                >
+              </td>
+              <% }%> <% if(slots[i].Availability == 'Maintenance') {%>
+              <td>
+                <a href="#" class="btn btn-danger" style="width: 130px"
+                  ><%= slots[i].Availability %></a
+                >
+              </td>
+              <% }%>
+            </tr>
+            <% }%>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- End Fixed Background IMG -->
+
+    <!-- Section for parking slots end -->
+
+    <!-- Start Two Column Section -->
+    <div class="container my-5">
+      <div class="row py-4">
+        <div class="col-lg-4 mb-4 my-lg auto">
+          <h1 class="text-dark font-weight-bold mb-3" id="About">About us</h1>
+          <p class="mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </p>
+        </div>
+        <div class="col-lg-8">
+          <img src="/images/code.jpg" alt="" class="w-100" />
+        </div>
+      </div>
+    </div>
+    <!-- End Two Column Section -->
+
+    <!-- Start Jumbotron -->
+    <div class="jumbotron py-5 mb-0">
+      <!-- <div class="container">
+        <div class="row">
+          <div class="col-md-7 col-lg-8 col-xl-9 my-auto">
+            <h4 id="Contact">Looking for parking reservation?</h4>
+          </div>
+
+          <div class="col-md-5 col-lg-4 col-xl-3 pt-4 pt-md-0">
+            <a
+              href="#"
+              class="btn btn-primary btn-lg"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
+              >Contact Us Today</a
+            >
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <!-- End Jumbotron -->
+
+    <!-- Start Footer -->
+    <footer>
+      <div class="container">
+        <div class="row text-light text-center py-4 justify-content-center">
+          <div class="col-sm-10 col-md-8 col-lg-6">
+            <img src="/images/e-park-logo2.png" alt="" />
+            <p>Facebook | Epark reservations</p>
+            <p>Twitter | @E_Park</p>
+            <p>Instagram | epark@email.com</p>
+            <p>Youtube | Epark</p>
+
+            <ul class="social pt-3">
+              <li>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Socket -->
+    <div class="socket text-light text-center py-3">
+      <p>&copy; <a href="#" target="_blank">E-park.com</a></p>
+    </div>
+    <!-- End Socket -->
+
+    <!-- Script Source Files -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap 4.5 JS -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- Popper JS -->
+    <script src="/js/popper.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="/js/all.min.js"></script>
+    <!-- Countdown Timer -->
+    <script src="/js/countdown.js"></script>
+    <!-- total -->
+    <script src="/js/total.js"></script>
+    <!-- qr code generator -->
+    <script src="/js/generate.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
+
+    <!-- End Script Source Files -->
+  </body>
+</html>
