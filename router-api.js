@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios").default;
-const url = "https://epark-project-api.herokuapp.com";
+const url = "https://e-park-6.herokuapp.com";
 
 // admin login =============================================================================================
 router.post("/admin-login", (req, res) => {
