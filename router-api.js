@@ -315,13 +315,18 @@ router.post("/add-reservation", (req, res) => {
             total_price: total_price,
           });
 
-          axios.post(url + "/addReserve", data).then((response) => {
-            if (response.data.status["remarks"] === "success") {
-              res.redirect("/home");
-            } else {
-              res.redirect("/home");
-            }
-          });
+          axios
+            .post(url + "/addReserve", data)
+            .then((response) => {
+              if (response.data.status["remarks"] === "success") {
+                res.redirect("/home");
+              } else {
+                res.redirect("/home");
+              }
+            })
+            .catch((err) => {
+              console.log("error ", err);
+            });
         }
       } else {
         res.redirect("/home");
