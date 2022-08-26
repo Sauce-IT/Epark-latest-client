@@ -70,7 +70,7 @@
               <ul class="dropdown-menu dropdown-menu-end">
                 <!-- <li><a class="dropdown-item" href="#">Profile</a></li> -->
                 <li>
-                  <a class="dropdown-item" href="/">Logout</a>
+                  <a class="dropdown-item" href="/admin-logout">Logout</a>
                 </li>
               </ul>
             </li>
@@ -185,23 +185,20 @@
                       </tr>
                     </thead>
                     <tbody>
-								      <% for(var i = 0; i < booking.length; i++) {%>
-                        <% if(booking[i].date_entry != null && booking[i].date_exit != null){ %>
-                            <tr>
-                              <td><%= booking[i].user_name %></td>
-                              <td><%= booking[i].Plate %></td>
-                              <td><%= booking[i].user_mobile %></td>
-                              <td><%= booking[i].date_entry %></td>
-                              <td><%= booking[i].date_exit %></td>
-                              <td><%= booking[i].total_price %></td>
-                            </tr>
-                        <% } %>
-                      <% } %>
-
+                      <% for(var i = 0; i < booking.length; i++) {%> <%
+                      if(booking[i].date_entry != null && booking[i].date_exit
+                      != null){ %>
+                      <tr>
+                        <td><%= booking[i].user_name %></td>
+                        <td><%= booking[i].Plate %></td>
+                        <td><%= booking[i].user_mobile %></td>
+                        <td><%= booking[i].date_entry %></td>
+                        <td><%= booking[i].date_exit %></td>
+                        <td><%= booking[i].total_price %></td>
+                      </tr>
+                      <% } %> <% } %>
                     </tbody>
-                    <tfoot>
-
-                    </tfoot>
+                    <tfoot></tfoot>
                   </table>
                 </div>
               </div>

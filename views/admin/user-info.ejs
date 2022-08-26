@@ -70,7 +70,7 @@
               <ul class="dropdown-menu dropdown-menu-end">
                 <!-- <li><a class="dropdown-item" href="#">Profile</a></li> -->
                 <li>
-                  <a class="dropdown-item" href="/">Logout</a>
+                  <a class="dropdown-item" href="/admin-logout">Logout</a>
                 </li>
               </ul>
             </li>
@@ -152,49 +152,74 @@
         </nav>
       </div>
     </div>
-<!--add modal -->
-      <div class="modal" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Add Employee</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <form  id="emp-form" action="/api/add-employee" method="post">
-                <div class="modal-body">
-                  <div class="mb-3">
-                    <label class="form-label" required for="rate">Name:</label>
-                    <input type="text" name="admin_name" id="admin_name" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label" required for="rate">Username:</label>
-                    <input type="text" name="admin_username" id="admin_username" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label" required for="rate">Password:</label>
-                    <input type="password" name="admin_password" id="admin_password" class="form-control">
-                  </div>
-                  
+    <!--add modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Employee</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="emp-form" action="/api/add-employee" method="post">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label class="form-label" required for="rate">Name:</label>
+                  <input
+                    type="text"
+                    name="admin_name"
+                    id="admin_name"
+                    class="form-control"
+                  />
                 </div>
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Create Acc</button>
-                  <button type="submit"class="btn btn-danger"data-bs-dismiss="modal" href="javascript:{}" onclick="document.getElementById('emp-form').submit();">
-                    Cancel
-                  </button>
+                <div class="mb-3">
+                  <label class="form-label" required for="rate"
+                    >Username:</label
+                  >
+                  <input
+                    type="text"
+                    name="admin_username"
+                    id="admin_username"
+                    class="form-control"
+                  />
                 </div>
+                <div class="mb-3">
+                  <label class="form-label" required for="rate"
+                    >Password:</label
+                  >
+                  <input
+                    type="password"
+                    name="admin_password"
+                    id="admin_password"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">
+                  Create Acc
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-danger"
+                  data-bs-dismiss="modal"
+                  href="javascript:{}"
+                  onclick="document.getElementById('emp-form').submit();"
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
-            </div>
-          
           </div>
         </div>
       </div>
+    </div>
 
-<!-- end modal -->
+    <!-- end modal -->
     <!-- offcanvas -->
     <main class="mt-5 pt-3">
       <div class="container-fluid">
@@ -209,8 +234,13 @@
             <div class="card">
               <div class="card-header">
                 <span><i class="bi bi-table me-2"></i></span> Data Table
-                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add Employee</a>
-                    
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#myModal"
+                  >Add Employee</a
+                >
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -229,60 +259,130 @@
                     </thead>
                     <tbody>
                       <% for(var i = 0; i < employee.length; i++) {%>
-                        <tr>
-                              <td><span id="eadmin_name"><%= employee[i].admin_name %></span></td>
-                              <td><span id="eadmin_username"><%= employee[i].admin_username %></span></td>
-                              <td><span id="eposition"><%= employee[i].position %></span></td>
-                                <td>
-                                  <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModaledit<%= employee[i].admin_id %>">Edit info</a>
-                                </td>
-                            </tr>
-                                                                  
-                                      <!--edit modal -->
-                                      <div class="modal" id="myModaledit<%= employee[i].admin_id %>">
-                                        <div class="modal-dialog">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title">Add Employee</h5>
-                                              <button
-                                                type="button"
-                                                class="btn-close"
-                                                data-bs-dismiss="modal"
-                                              ></button>
-                                            </div>
-                                            <div class="modal-body">
-                                              <form  id="emp-form" action="/api/edit-employee" method="post">
-                                                <div class="modal-body">
-                                                  <div class="mb-3">
-                                                    <label class="form-label" required for="admin_name">Name:</label>
-                                                    <input type="text" value="<%= employee[i].admin_name %>" name="admin_name" id="admin_name" class="form-control">
-                                                  </div>
-                                                  <div class="mb-3">
-                                                    <label class="form-label" required for="admin_username">Username:</label>
-                                                    <input type="text" value="<%= employee[i].admin_username %>" name="admin_username" id="admin_username" class="form-control">
-                                                  </div>
-                                                  <div class="mb-3">
-                                                    <label class="form-label" required for="admin_password">Password:</label>
-                                                    <input type="password" placeholder="********"  name="admin_password" id="admin_password" class="form-control">
-                                                    <input type="number" value="<%= employee[i].admin_id %>" name="admin_id" id="admin_id" class="form-control" hidden>
-                                                  </div>
-                                                  
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                                                  <button type="submit"class="btn btn-danger"data-bs-dismiss="modal" href="javascript:{}" onclick="document.getElementById('emp-form').submit();">
-                                                    Cancel
-                                                  </button>
-                                                </div>
-                                            </form>
-                                            </div>
-                                          
-                                          </div>
-                                        </div>
-                                      </div>
+                      <tr>
+                        <td>
+                          <span id="eadmin_name"
+                            ><%= employee[i].admin_name %></span
+                          >
+                        </td>
+                        <td>
+                          <span id="eadmin_username"
+                            ><%= employee[i].admin_username %></span
+                          >
+                        </td>
+                        <td>
+                          <span id="eposition"
+                            ><%= employee[i].position %></span
+                          >
+                        </td>
+                        <td>
+                          <a
+                            href="#"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#myModaledit<%= employee[i].admin_id %>"
+                            >Edit info</a
+                          >
+                        </td>
+                      </tr>
+
+                      <!--edit modal -->
+                      <div
+                        class="modal"
+                        id="myModaledit<%= employee[i].admin_id %>"
+                      >
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Add Employee</h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                              ></button>
+                            </div>
+                            <div class="modal-body">
+                              <form
+                                id="emp-form"
+                                action="/api/edit-employee"
+                                method="post"
+                              >
+                                <div class="modal-body">
+                                  <div class="mb-3">
+                                    <label
+                                      class="form-label"
+                                      required
+                                      for="admin_name"
+                                      >Name:</label
+                                    >
+                                    <input
+                                      type="text"
+                                      value="<%= employee[i].admin_name %>"
+                                      name="admin_name"
+                                      id="admin_name"
+                                      class="form-control"
+                                    />
+                                  </div>
+                                  <div class="mb-3">
+                                    <label
+                                      class="form-label"
+                                      required
+                                      for="admin_username"
+                                      >Username:</label
+                                    >
+                                    <input
+                                      type="text"
+                                      value="<%= employee[i].admin_username %>"
+                                      name="admin_username"
+                                      id="admin_username"
+                                      class="form-control"
+                                    />
+                                  </div>
+                                  <div class="mb-3">
+                                    <label
+                                      class="form-label"
+                                      required
+                                      for="admin_password"
+                                      >Password:</label
+                                    >
+                                    <input
+                                      type="password"
+                                      placeholder="********"
+                                      name="admin_password"
+                                      id="admin_password"
+                                      class="form-control"
+                                    />
+                                    <input
+                                      type="number"
+                                      value="<%= employee[i].admin_id %>"
+                                      name="admin_id"
+                                      id="admin_id"
+                                      class="form-control"
+                                      hidden
+                                    />
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary">
+                                    Save Changes
+                                  </button>
+                                  <button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    data-bs-dismiss="modal"
+                                    href="javascript:{}"
+                                    onclick="document.getElementById('emp-form').submit();"
+                                  >
+                                    Cancel
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
                       <% } %>
-
                     </tbody>
                     <tfoot>
                       <tr>
@@ -307,7 +407,5 @@
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap5.min.js"></script>
     <script src="/js/script.js"></script>
-
   </body>
-
 </html>
