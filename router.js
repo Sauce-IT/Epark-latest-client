@@ -343,6 +343,7 @@ router.get("/manage-booking", (req, res) => {
               }
             }
           }
+          console.log("hello world!");
         }
 
         // available today slot
@@ -373,6 +374,10 @@ router.get("/manage-booking", (req, res) => {
     })
     .catch(function (error) {
       userbook = null;
+      res.render("manage-booking", {
+        allbooking: [],
+        slots: userbook,
+      });
     });
 });
 
@@ -405,18 +410,24 @@ router.get("/user-logs", (req, res) => {
   if (!req.session.user) return res.redirect("/admin-login");
 
   // All booking
-  axios.post(url + "/getAllBookings").then((response) => {
-    if (response.data.status["remarks"] === "success") {
-      const slot = response.data.payload;
-      sampledata = slot;
-      console.log("slot available today", slot);
-    } else {
-      sampledata = sampledata;
-      res.redirect("/user-logs");
-      console.log(error);
-    }
-    res.render("user-logs", { booking: sampledata });
-  });
+  axios
+    .post(url + "/getAllBookings")
+    .then((response) => {
+      console.log("response", response);
+      if (response.data.status["remarks"] === "success") {
+        const slot = response.data.payload;
+        sampledata = slot;
+        console.log("slot available today", slot);
+      } else {
+        sampledata = sampledata;
+        res.redirect("/user-logs");
+      }
+      res.render("user-logs", { booking: sampledata });
+    })
+    .catch((error) => {
+      console.log("error!", error);
+      res.render("user-logs", { booking: [] });
+    });
 });
 
 router.get("/settings", (req, res) => {
