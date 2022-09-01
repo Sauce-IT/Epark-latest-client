@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios").default;
 
-const url = "https://e-park-6.herokuapp.com";
+const url = "https://epark-project-api.herokuapp.com";
 
 sampledata = [
   {
@@ -520,6 +520,10 @@ router.get("/manage-booking-clerk", (req, res) => {
     })
     .catch(function (error) {
       userbook = null;
+      res.render("manage-booking-clerk", {
+        allbooking: [],
+        slots: userbook,
+      });
     });
 });
 

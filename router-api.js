@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios").default;
-const url = "https://e-park-6.herokuapp.com";
+const url = "https://epark-project-api.herokuapp.com";
 
 // admin login =============================================================================================
 router.post("/admin-login", (req, res) => {
@@ -318,6 +318,7 @@ router.post("/add-reservation", (req, res) => {
           axios
             .post(url + "/addReserve", data)
             .then((response) => {
+              console.log(response);
               if (response.data.status["remarks"] === "success") {
                 res.redirect("/home");
               } else {
