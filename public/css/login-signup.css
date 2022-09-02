@@ -344,7 +344,7 @@ input {
     input:focus:-moz-placeholder {
       color: #222; }
 
-input[type=checkbox]:not(old) {
+/* input[type=checkbox]:not(old) {
   width: 2em;
   margin: 0;
   padding: 0;
@@ -391,7 +391,7 @@ input[type=checkbox]:not(old):checked + label > span:before {
   line-height: 1.2;
   text-align: center;
   font-family: 'Material-Design-Iconic-Font';
-  font-weight: bold; }
+  font-weight: bold; } */
 
 .agree-term {
   display: inline-block;

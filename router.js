@@ -195,6 +195,10 @@ router.get("/admin-login", (req, res) => {
 router.get("/admin-changepass", (req, res) => {
   res.render("admin-change-password");
 });
+router.get("/forgotPass", (req, res) => {
+  res.render("forgotPass");
+});
+
 
 // --ok
 router.get("/admin-dashboard", (req, res) => {

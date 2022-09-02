@@ -16,6 +16,7 @@ const port = process.env.PORT || 3000;
 
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
+
 const url = "https://epark-project-api.herokuapp.com/";
 
 // comment this if you are going to deploy the application

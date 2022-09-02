@@ -416,4 +416,27 @@ router.post("/update-profile", (req, res) => {
     });
 });
 
+router.post("/deleteAcc", (req, res) => {
+  const data = JSON.stringify({
+    name: req.body.user_id,
+  });
+  axios
+    .post(url + "/deleteAcc", data)
+    .then((response) => {
+      if (response.data.status["remarks"] === "success") {
+        req.session = null;
+        res.redirect("/user-login");
+      } else {
+        res.redirect("/user-profile");
+      }
+    })
+    .catch(function (error) {
+      res.redirect("/user-login");
+    });
+});
+
+
+
+
+
 module.exports = router;

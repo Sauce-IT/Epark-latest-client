@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forgot Password</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/login-signup.css">
+      <!-- Bootstrap 4.5 CSS -->
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+</head>
+
+<h2 style="color: #bb0808 ; text-align: center;"><span style="color:#800000;">E</span>-Park</h2>
+        <!-- Log in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="images/e-park-logo3.png" alt="sing up image"></figure>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Forgot Password?</h2>
+                        
+                        <p>Please fill in your email for verification/Email has been sent!</p>
+                        <br>
+                        
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email material-icons-name"></i></label>
+                                <input type="text" name="email" id="email" required="_required"placeholder="E-mail"/>
+                            </div>
+                            <div class="form-group">
+                            <div class="form-group form-button">
+                                <button class="form-submit" onclick="checkpass()" data-bs-toggle="modal" data-bs-target="#myModal">Submit</button>
+                            </div>
+                            <a href="/user-login" >Back</a>
+                    </div>
+                </div>
+            </div>
+                            
+                <!-- modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title">New Generated Password</h5>
+                        <button
+                            type="button"
+                            class="btn-close-white"
+                            data-bs-dismiss="modal"
+                        >
+                            x
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        <!-- <form> -->
+                        <div class="mb-3">
+                        <div class="mb-4">
+                            <div >
+                                <center>
+                                    <h4 id="newPass">Here's your new Password</h4>
+                                </center>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+  <script src="/js/newPass.js"></script>
+  <!-- jQuery -->
+  <script src="/js/jquery-3.5.1.min.js"></script>
+  <!-- Bootstrap 4.5 JS -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
