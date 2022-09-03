@@ -41,10 +41,10 @@
                 <i class="far fa-edit fa-2x mb-4"></i>
                 <h5>
                   <form class="user-form" id="delete-form" action="/api/deleteAcc" method="post">
+
                     <input type="text" name="user_id" id="user_id" value=" <%= currentUsers.id %>" hidden>
-                    <button type="submit" class="btn btn-outline-danger " style="font-size: 10px;" href="javascript:{}"
-                    onclick="document.getElementById('delete-form').submit();"> Delete Account </button>
-                   
+                      <button type="submit" class="btn btn-outline-danger " style="font-size: 10px;" href="javascript:{}"
+                      onclick="document.getElementById('delete-form').submit();"> Delete Account </button>
                   </form>
                 </h5> 
               </div>

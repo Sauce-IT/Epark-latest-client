@@ -1,10 +1,16 @@
-function checkpass(){
-    const url = "https://e-park-6.herokuapp.com";
 
+
+function checkpass(){
+  const url = "https://epark-project-api.herokuapp.com";
+ 
     var email = document.getElementById('email').value;
-    var newp = document.getElementById("newPass").innerHTML;
-    console.log(email);
-    //   // get data from database
+    var newp = document.getElementById("newPass").value;
+    
+
+    if(email == null || email == ""){
+      document.getElementById("newPass").value = "Fill Up Email First";
+    } else{
+
       fetch(url + "/forgotPass", {
         method: "POST",
         body: JSON.stringify({
@@ -12,22 +18,18 @@ function checkpass(){
         }),
       }).then(async function (response) {
         const res = await response.json();
+        console.log(res);
         if (res.status["remarks"] === "failed") {
-          document.getElementById("newPass").innerHTML = "Email Not Found!";
+          document.getElementById("newPass").value = "Email Not Found!";
         } else {
-
-            if(email == null || email == ""){
-                document.getElementById("newPass").innerHTML = "Fill Up Email First";
-            }else{
-                document.getElementById("newPass").innerHTML  = res.payload;
-            }
+          document.getElementById("newPass").value  = res.payload;
         }
       });
 
+    }
     
 
 }
-
 
 
 

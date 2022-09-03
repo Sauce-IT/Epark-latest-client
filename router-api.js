@@ -418,7 +418,7 @@ router.post("/update-profile", (req, res) => {
 
 router.post("/deleteAcc", (req, res) => {
   const data = JSON.stringify({
-    name: req.body.user_id,
+    user_id: req.body.user_id,
   });
   axios
     .post(url + "/deleteAcc", data)
@@ -427,6 +427,7 @@ router.post("/deleteAcc", (req, res) => {
         req.session = null;
         res.redirect("/user-login");
       } else {
+        req.session.message = response.data.status["message"];
         res.redirect("/user-profile");
       }
     })
