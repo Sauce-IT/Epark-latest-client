@@ -101,7 +101,7 @@ router.get("/home", (req, res) => {
                       ) {
                         var paid_date = new Date(book[i].paid_date);
                         var date_expiration = new Date(
-                          paid_date.getTime() + 60 * 60000
+                          paid_date.getTime() + 10 * 60000
                         );
                         var now = new Date();
 
