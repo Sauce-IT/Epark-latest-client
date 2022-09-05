@@ -117,9 +117,8 @@ router.get("/home", (req, res) => {
 
                         //update book status if the aloted time overlap to the time givin
                         if (
-                          (now > date_expiration &&
-                            book[i].date_entry == null) ||
-                          (now > date_expiration && book[i].date_entry == "")
+                          now > date_expiration &&
+                          book[i].date_entry == null
                         ) {
                           if (
                             book[i].book_status != "expired" &&
