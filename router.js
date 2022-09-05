@@ -102,7 +102,7 @@ router.get("/home", (req, res) => {
                         var paid_date = new Date(book[i].paid_date);
 
                         // 8 hrs added
-                        var date_expiration = new Date(paid_date.getTime() + 480 * 60000);
+                        var date_expiration = new Date(paid_date.getTime() + 485 * 60000);
                         var now = new Date();
 
                         var now_date_update = new Date(now.getTime() + 480 * 60000);
@@ -324,7 +324,7 @@ router.get("/manage-booking", (req, res) => {
           ) {
             var paid_date = new Date(book[i].paid_date);
            // 8 hrs added
-           var date_expiration = new Date(paid_date.getTime() + 480 * 60000);
+           var date_expiration = new Date(paid_date.getTime() + 485 * 60000);
            var now = new Date();
 
            var now_date_update = new Date(now.getTime() + 480 * 60000);
@@ -476,7 +476,7 @@ router.get("/manage-booking-clerk", (req, res) => {
           ) {
             var paid_date = new Date(book[i].paid_date);
             // 8 hrs added
-            var date_expiration = new Date(paid_date.getTime() + 480 * 60000);
+            var date_expiration = new Date(paid_date.getTime() + 485 * 60000);
             var now = new Date();
 
             var now_date_update = new Date(now.getTime() + 480 * 60000);
