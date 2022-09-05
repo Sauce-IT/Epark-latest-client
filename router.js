@@ -133,6 +133,8 @@ router.get("/home", (req, res) => {
                                 res.redirect("/user-login");
                               });
                           }
+                        } else {
+                          alert("something went wrong");
                         }
                       }
                     }
