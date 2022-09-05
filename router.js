@@ -109,6 +109,8 @@ router.get("/home", (req, res) => {
                           now.getTime() > paid_date.getTime() + 3 * 60000 &&
                           book[i].date_entry == ""
                         ) {
+                          alert("expires");
+
                           if (
                             book[i].book_status != "expired" &&
                             book[i].paid_date != null
