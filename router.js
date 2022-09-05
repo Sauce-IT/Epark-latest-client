@@ -137,6 +137,8 @@ router.get("/home", (req, res) => {
                       }
                     }
                   } else {
+                    alert("something went wrong");
+
                     userbook = null;
 
                     console.log(error);
