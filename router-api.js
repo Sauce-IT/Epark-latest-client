@@ -418,7 +418,7 @@ router.post("/update-profile", (req, res) => {
 
 router.post("/deleteAcc", (req, res) => {
   const data = JSON.stringify({
-    user_id: req.body.user_id,
+    user_id: parseInt(req.body.user_id)
   });
   axios
     .post(url + "/deleteAcc", data)
