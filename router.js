@@ -112,6 +112,7 @@ router.get("/home", (req, res) => {
                             book[i].date_entry == null) ||
                           (now > date_expiration && book[i].date_entry == "")
                         ) {
+                          alert("expired");
                           if (
                             book[i].book_status != "expired" &&
                             book[i].paid_date != null
