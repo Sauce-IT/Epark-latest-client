@@ -103,7 +103,7 @@ router.get("/home", (req, res) => {
 
                         // 8 hrs added
                         var date_expiration = new Date(
-                          paid_date.getTime() + 485 * 60000
+                          paid_date.getTime() + 5 * 60000
                         );
                         var now = new Date();
 
