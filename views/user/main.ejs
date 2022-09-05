@@ -94,14 +94,15 @@
             Schedule and organize your reservation.<br />
             Sign up and book for details.
           </p>
-          <% if(userbook == null ) {%>
+          <% if(userbook == null) {%>
           <a
             href="#"
             class="btn btn-outline-dark btn-md submit-btn"
             data-bs-toggle="modal"
             data-bs-target="#myModal4"
-            >Reserve now 1</a
-          >' <% }%> <% if(userbook != null ) {%> <% for(var i = 0; i <
+            >Reserve now</a
+          >
+          <% }%> <% if(userbook != null ) {%> <% for(var i = 0; i <
           userbook.length; i++) {%> <% if(userbook[i].book_status == 'expired'
           || userbook[i].book_status == 'exited' ) {%>
           <a
@@ -109,7 +110,7 @@
             class="btn btn-outline-dark btn-md submit-btn"
             data-bs-toggle="modal"
             data-bs-target="#myModal4"
-            >Reserve now 2</a
+            >Reserve now</a
           >' <% }else {%>
           <a
             href="#"
