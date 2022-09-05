@@ -1,5 +1,6 @@
 const barchart = document.querySelectorAll(".barchart");
-const url = "https://e-park-6.herokuapp.com";
+// const url = "https://e-park.herokuapp.com";
+const url = "https://epark-project-api.herokuapp.com";
 
 const data = [];
 const label = [];

@@ -427,7 +427,7 @@ router.post("/deleteAcc", (req, res) => {
         req.session = null;
         res.redirect("/user-login");
       } else {
-        req.session.message = response.data.status["message"];
+        console.log(response);
         res.redirect("/user-profile");
       }
     })
