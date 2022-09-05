@@ -100,25 +100,17 @@ router.get("/home", (req, res) => {
                         book[i].book_status != "expired"
                       ) {
                         var paid_date = new Date(book[i].paid_date);
-                        var paid_date = new Date(book[i].paid_date);
                         // 8 hrs added
                         var date_expiration = new Date(
-                          paid_date.getTime() + 5 * 60000
-                        ).toLocaleString("en-US", {
-                          timeZone: "Asia/Hong_Kong",
-                        });
-                        var now = new Date().toLocaleString("en-US", {
-                          timeZone: "Asia/Hong_Kong",
-                        });
-                        console.log(date_expiration);
-                        console.log(now);
-
-                        // var now_date_update = new Date();
+                          paid_date.getTime() + 3 * 60000
+                        );
+                        var now = new Date();
 
                         //update book status if the aloted time overlap to the time givin
                         if (
-                          now > date_expiration &&
-                          book[i].date_entry == null
+                          (now > date_expiration &&
+                            book[i].date_entry == null) ||
+                          (now > date_expiration && book[i].date_entry == "")
                         ) {
                           if (
                             book[i].book_status != "expired" &&
@@ -330,16 +322,8 @@ router.get("/manage-booking", (req, res) => {
           ) {
             var paid_date = new Date(book[i].paid_date);
             // 8 hrs added
-            var date_expiration = new Date(
-              paid_date.getTime() + 5 * 60000
-            ).toLocaleString("en-US", { timeZone: "Asia/Hong_Kong" });
-            var now = new Date().toLocaleString("en-US", {
-              timeZone: "Asia/Hong_Kong",
-            });
-            console.log(date_expiration);
-            console.log(now);
-
-            // var now_date_update = new Date();
+            var date_expiration = new Date(paid_date.getTime() + 60 * 60000);
+            var now = new Date();
 
             //update book status if the aloted time overlap to the time givin
             if (now > date_expiration && book[i].date_entry == null) {
@@ -484,16 +468,8 @@ router.get("/manage-booking-clerk", (req, res) => {
           ) {
             var paid_date = new Date(book[i].paid_date);
             // 8 hrs added
-            var date_expiration = new Date(
-              paid_date.getTime() + 5 * 60000
-            ).toLocaleString("en-US", { timeZone: "Asia/Hong_Kong" });
-            var now = new Date().toLocaleString("en-US", {
-              timeZone: "Asia/Hong_Kong",
-            });
-            console.log(date_expiration);
-            console.log(now);
-
-            // var now_date_update = new Date();
+            var date_expiration = new Date(paid_date.getTime() + 60 * 60000);
+            var now = new Date();
 
             //update book status if the aloted time overlap to the time givin
             if (now > date_expiration && book[i].date_entry == null) {
