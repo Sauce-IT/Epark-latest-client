@@ -100,20 +100,13 @@ router.get("/home", (req, res) => {
                         book[i].book_status != "expired"
                       ) {
                         var paid_date = new Date(book[i].paid_date);
-
-                        // 8 hrs added
-                        var date_expiration = new Date(paid_date.getTime() + 5 * 60000);
                         var now = new Date();
-                        
-                        // var date_expiration = new Date(paid_date.getTime() + 3 * 60000);
-
+                    
                         //update book status if the aloted time overlap to the time givin
                         if (
-                          now.getTime() > paid_date.getTime() + 3 * 60000 &&
-                          book[i].date_entry == "" 
+                          now.getTime() > paid_date.getTime() + 60 * 60000 &&
+                          book[i].date_entry == null
                         ) {
-                          userbook = null;
-
                           if (
                             book[i].book_status != "expired" &&
                             book[i].paid_date != null
@@ -197,9 +190,7 @@ router.get("/admin-login", (req, res) => {
   res.render("adminclerk-login", { message: message });
 });
 
-router.get("/admin-changepass", (req, res) => {
-  res.render("admin-change-password");
-});
+
 router.get("/forgotPass", (req, res) => {
   res.render("forgotPass");
 });
@@ -324,8 +315,6 @@ router.get("/manage-booking", (req, res) => {
             book[i].book_status != "expired"
           ) {
             var paid_date = new Date(book[i].paid_date);
-           // 8 hrs added
-           var date_expiration = new Date(paid_date.getTime() + 60 * 60000);
            var now = new Date();
 
 
@@ -334,7 +323,7 @@ router.get("/manage-booking", (req, res) => {
               now.getTime() > paid_date.getTime() + 60 * 60000 &&
               book[i].date_entry == null
             ) {
-              userbook = null;
+
               if (
                 book[i].book_status != "expired" &&
                 book[i].paid_date != null
@@ -475,17 +464,13 @@ router.get("/manage-booking-clerk", (req, res) => {
             book[i].book_status != "expired"
           ) {
             var paid_date = new Date(book[i].paid_date);
-            // 8 hrs added
-            var date_expiration = new Date(paid_date.getTime() + 60 * 60000);
             var now = new Date();
           
-
             //update book status if the aloted time overlap to the time givin
             if (
               now.getTime() > paid_date.getTime() + 60 * 60000 &&
               book[i].date_entry == null
             ) {
-              userbook = null;
               if (
                 book[i].book_status != "expired" &&
                 book[i].paid_date != null
