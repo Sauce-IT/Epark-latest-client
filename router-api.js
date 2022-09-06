@@ -433,12 +433,9 @@ router.post("/deleteAcc", (req, res) => {
       }
     })
     .catch(function (error) {
+      console.log(error);
       res.redirect("/user-login");
     });
 });
-
-
-
-
 
 module.exports = router;
