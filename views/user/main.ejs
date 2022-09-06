@@ -101,15 +101,15 @@
             data-bs-toggle="modal"
             data-bs-target="#myModal4"
             >Reserve now</a
-          >' <% }%> <% if(userbook != null ) {%> <% for(var i = 0; i <
-          userbook.length; i++) {%> <% if(userbook[i].book_status == 'expired'
-          || userbook[i].book_status == 'exited' ) {%>
+          >' <% }%> <% if(userbook != null )  {%>
+             <% for(var i = 0; i < userbook.length; i++) {%>
+             <% if(userbook[i].book_status == 'expired' || userbook[i].book_status == 'exited' ) { %>
           <a
             href="#"
             class="btn btn-outline-dark btn-md submit-btn"
             data-bs-toggle="modal"
             data-bs-target="#myModal4"
-            >Reserve now</a
+            >Reserve now <% userbook %></a
           >' <% }else {%>
           <a
             href="#"

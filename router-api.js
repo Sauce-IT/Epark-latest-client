@@ -420,6 +420,7 @@ router.post("/deleteAcc", (req, res) => {
   const data = JSON.stringify({
     user_id: parseInt(req.body.user_id)
   });
+  console.log(data);
   axios
     .post(url + "/deleteAcc", data)
     .then((response) => {
