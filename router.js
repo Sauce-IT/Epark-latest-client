@@ -104,7 +104,7 @@ router.get("/home", (req, res) => {
                     
                         //update book status if the aloted time overlap to the time givin
                         if (
-                          now.getTime() >= paid_date.getTime() + 60 * 60000 &&
+                          now.getTime() > paid_date.getTime() + 3 * 60000 &&
                           book[i].date_entry == null
                         ) {
                           if (
@@ -320,7 +320,7 @@ router.get("/manage-booking", (req, res) => {
 
             //update book status if the aloted time overlap to the time givin
             if (
-              now.getTime() >= paid_date.getTime() + 60 * 60000 &&
+              now.getTime() > paid_date.getTime() + 3 * 60000 &&
               book[i].date_entry == null
             ) {
 
@@ -468,7 +468,7 @@ router.get("/manage-booking-clerk", (req, res) => {
           
             //update book status if the aloted time overlap to the time givin
             if (
-              now.getTime() >= paid_date.getTime() + 60 * 60000 &&
+              now.getTime() > paid_date.getTime() + 3 * 60000 &&
               book[i].date_entry == null
             ) {
               if (
