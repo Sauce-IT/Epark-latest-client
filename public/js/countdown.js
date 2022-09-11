@@ -1,7 +1,4 @@
 
-
-var aw = 0;
-
 var sec = 0;
 var min = 0;
 
@@ -23,53 +20,41 @@ function countdown(){
 
 
                 var paid_date = new Date(document.getElementById("status").value);
-                var count = new Date(paid_date.getTime() + (60 * 60000));
-                var interval = new Date(paid_date.getTime() + 69 * 60000);
+                var count = new Date(paid_date.getTime() + 60 * 60000);
                 var now = new Date();
                 var gap = (count-now);
 
+
                 // container for 30 
-                if(aw == 0){
-                    aw = gap;
-                }
+               
+                  var aw = gap;
+
 
                 // reversing time takes 4 delay(idk if seconds) 
-                aw--;
-                aw--;
-                aw--;
-                aw--;
-
                 
-
-
-                if(now > count)
+                if(now >= count)
                 {
-                    document.getElementById("counter").innerHTML = "00:00 (Expired)<br> Reservation will be available after refresh";
+                    document.getElementById("counter").innerHTML = "00:00 (Expired)<br>New reservation will be available after refresh";
                     clearInterval(counta);
                 }
+
+                aw--;
 
                 // var days = Math.floor(aw / (1000 * 60 * 60 * 24));
                 var hours = Math.floor((aw % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 var minutes = Math.floor((aw % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((aw % (1000 * 60)) / 1000);
                 
-                if(document.getElementById("counter").innerHTML != null)
+                if(now <= count )
                 {
                     document.getElementById("counter").innerHTML =  hours + ':' +  minutes + ":" + seconds ;
                 }else{
-                    
-                }
-
-                if (minutes == 0 && seconds == 0)
-                {
                     min = 0;
                     sec = 0;
-                    document.getElementById("counter").innerHTML = "00:00:00";
+                    document.getElementById("counter").innerHTML = "00:00 (Expired)<br>New reservation will be available after refresh";
 
                 }
-                
-
-                // console.log('countdown',aw);
+                // console.log('countdown',count);
 
                 
             });
