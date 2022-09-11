@@ -102,14 +102,11 @@ router.get("/home", (req, res) => {
                         var paid_date = new Date(book[i].paid_date);
                         var now = new Date();
 
-                        console.log(
-                          now.getTime(),
-                          paid_date.getTime() + 1 * 60000
-                        );
+                        console.log(now.getTime(), paid_date.getTime());
 
                         //update book status if the aloted time overlap to the time givin
                         if (
-                          now.getTime() > paid_date.getTime() + 1 * 60000 &&
+                          now.getTime() > paid_date.getTime() &&
                           book[i].date_entry == null
                         ) {
                           if (
