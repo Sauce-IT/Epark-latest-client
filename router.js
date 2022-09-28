@@ -35,6 +35,38 @@ router.get("/", (req, res) => {
     .catch(function (error) {});
 });
 
+router.get("/getBooking_list", (req, res) => {
+
+  axios
+    .post(url + "/getBookinglist")
+    .then((response) => {
+        if (response.data.status["remarks"] === "success") {
+          const slot = response.data.payload;
+          sampledata = slot;
+
+            axios
+            .post(url + "/getTodayBookings")
+            .then((response) => {
+              if (response.data.status["remarks"] === "success") {
+                const parking = response.data.payload;
+                userbook = parking;
+
+                res.render("getBooking_list",{ slots: sampledata,parkings: userbook });
+
+              }
+            })  
+         
+        } else {
+          res.redirect("/getBooking_list");
+        }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+});
+
+
 router.get("/user-login", (req, res) => {
   if (req.session.user) return res.redirect("/home");
 
@@ -127,34 +159,36 @@ router.get("/home", (req, res) => {
                                 res.redirect("/user-login");
                               });
                           }
-                        }
-                      }else{
+                        }else{
                        
-                        console.log("10 mins before expiration");
-                        var date_created = new Date(book[i].date_created);
-                        var now = new Date();
-                    
-                        //update book status if the aloted time overlap to the time givin
-                        if ( now.getTime() > date_created.getTime() + 10 * 60000 &&  book[i].book_status == "unpaid" ) 
-                        {
-                          const data = JSON.stringify({
-                            booking_id: book[i].booking_id,
-                            book_status: "expired",
-                          });
-
-                          axios
-                            .post(url + "/updateBookingstatus", data)
-                            .then((response) => {
-                              console.log(
-                                "Expired due to unpaid reservation"
-                              );
-                            })
-                            .catch(function (error) {
-                              res.redirect("/user-login");
-                            });
-
                         }
                       }
+                      
+                      console.log("10 mins before expiration");
+                      var date_created = new Date(book[i].date_created );
+                      var now = new Date();
+                      console.log(now > date_created);
+                      console.log(now);
+                      //update book status if the aloted time overlap to the time givin
+                      // if ( now.getTime() > date_created.getTime() && book[i].book_status == "unpaid" ) 
+                      // {
+                      //   const data = JSON.stringify({
+                      //     booking_id: book[i].booking_id,
+                      //     book_status: "expired",
+                      //   });
+
+                      //   axios
+                      //     .post(url + "/updateBookingstatus", data)
+                      //     .then((response) => {
+                      //       console.log(
+                      //         "Expired due to unpaid reservation"
+                      //       );
+                      //     })
+                      //     .catch(function (error) {
+                      //       res.redirect("/user-login");
+                      //     });
+
+                      // }
                     }
                   } else {
                     userbook = null;
