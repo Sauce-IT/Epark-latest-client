@@ -1,13 +1,21 @@
 
- 
- <% for(var j = 0; j < parkings.length;j++) { %>
-        <% for(var i = 0; i < slots.length;i++) { %>
-            <% if(parkings[j].Slot_id == slots[i].slot_id){ %>
-                <%= slots[i].slot_id; %> , <%= slots[i].qr_code; %> <br>
-            <% }else{ %>
-                <%= parkings[j].Slot_id; %>, <br>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <title>E-Park</title>
+ </head>
+    <body>
+
+        <% for(var j = 0; j < parkings.length;j++) { %>
+            <% for(var i = 0; i < slots.length;i++) { %>
+                <% if(parkings[j].Slot_id == slots[i].slot_id){ %>
+                    No.<input value="<%= slots[i].slot_id; %>"  name="Number">,
+                    Qr code <input value="<%= slots[i].qr_code; %>" name="Qr_code"> <br>
+                <% }else{ %>
+                    No.<input value="<%= slots[i].slot_id; %>"  name="Number">, <br>
+                <% } %>
             <% } %>
         <% } %>
-    <% } %>
 
-  
+    </body>
+ </html>
