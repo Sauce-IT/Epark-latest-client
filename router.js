@@ -44,17 +44,9 @@ router.get("/getBooking_list", (req, res) => {
           const slot = response.data.payload;
           sampledata = slot;
 
-            axios
-            .post(url + "/getTodayBookings")
-            .then((response) => {
-              if (response.data.status["remarks"] === "success") {
-                const parking = response.data.payload;
-                userbook = parking;
-
-                res.render("getBooking_list",{ slots: sampledata,parkings: userbook });
-
-              }
-            })  
+         
+          res.render("getBooking_list",{ slots: sampledata});
+ 
          
         } else {
           res.redirect("/getBooking_list");

@@ -6,16 +6,10 @@
  </head>
     <body>
 
-        <% for(var j = 0; j < parkings.length;j++) { %>
             <% for(var i = 0; i < slots.length;i++) { %>
-                <% if(parkings[j].Slot_id == slots[i].slot_id){ %>
-                    No.<input value="<%= slots[i].slot_id; %>"  name="Number">,
-                    Qr code <input value="<%= slots[i].qr_code; %>" name="Qr_code"> <br>
-                <% }else{ %>
-                    No.<input value="<%= slots[i].slot_id; %>"  name="Number">, <br>
-                <% } %>
+                No.<input value="<%= slots[i].slot_id; %>"  name="Number">,
+                Qr code <input value="<%= slots[i].qr_code; %>" name="Qr_code"> <br>
             <% } %>
-        <% } %>
-
+       
     </body>
  </html>
