@@ -307,6 +307,7 @@ router.post("/add-reservation", (req, res) => {
           var t = req.body.time;
           var total_price = rates * t;
 
+          
           const data = JSON.stringify({
             slot_id: req.body.reserve_slot,
             user_id: req.session.user.id,
@@ -314,21 +315,26 @@ router.post("/add-reservation", (req, res) => {
             hrs: req.body.time,
             total_price: total_price,
           });
-
-          axios
-            .post(url + "/addReserve", data)
-            .then((response) => {
-              console.log(response);
-              if (response.data.status["remarks"] === "success") {
-                res.redirect("/home");
-              } else {
+            if( req.body.plate != null && req.body.plate != "" ){
+                console.log('kompleto');
+                axios
+                  .post(url + "/addReserve", data)
+                  .then((response) => {
+                    console.log(response);
+                    if (response.data.status["remarks"] === "success") {
+                      res.redirect("/home");
+                    } else {
+                      res.redirect("/home");
+                    }
+                  })
+                  .catch((err) => {
+                    console.log("error ", err);
+                  });
+              }else{
                 res.redirect("/home");
               }
-            })
-            .catch((err) => {
-              console.log("error ", err);
-            });
-        }
+            }
+
       } else {
         res.redirect("/home");
         console.log(error);
