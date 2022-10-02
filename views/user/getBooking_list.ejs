@@ -8,7 +8,9 @@
 
             <% for(var i = 0; i < slots.length;i++) { %>
                 No.: <%= slots[i].slot_id; %>,
-                Code:  <%= slots[i].qr_code; %> <br>
+                Code:  <%= slots[i].qr_code; %>,
+                Status:  <%= slots[i].status; %>,
+                <br>
             <% } %>
        
     </body>
