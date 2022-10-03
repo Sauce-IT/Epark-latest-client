@@ -6,10 +6,10 @@
  </head>
     <body>
 
-            <% for(var i = 0; i < slots.length;i++) { %>
-                No.: <%= slots[i].slot_id; %>,
-                Code:  <%= slots[i].qr_code; %>,
-                Status:  <%= slots[i].status; %>,
+            <% for (let [index, data] of Object.entries(slots) || []) { %>
+                No.: <%=  data.slot_id; %>,
+                qr_code: <%=  data.qr_code; %>,
+                status: <%=  data.status; %>,
                 <br>
             <% } %>
        

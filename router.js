@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
     .catch(function (error) {});
 });
 
-router.get("/getBooking_list", (req, res) => {
+router.get("/getBooking", (req, res) => {
 
   axios
     .post(url + "/getBookinglist")
@@ -43,13 +43,13 @@ router.get("/getBooking_list", (req, res) => {
         if (response.data.status["remarks"] === "success") {
           const slot = response.data.payload;
           sampledata = slot;
-
+          console.log(sampledata);
          
-          res.render("getBooking_list",{ slots: sampledata});
+            res.render("getBooking_list",{ slots: sampledata});
  
          
         } else {
-          res.redirect("/getBooking_list");
+          // res.redirect("/getBooking_list");
         }
     })
     .catch(function (error) {
