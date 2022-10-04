@@ -205,17 +205,17 @@
                           <!-- exit table -->
                           <% if(allbooking[i].date_exit == null){ %>
 
-                           <p style="color: blue">No exit</p>
+                          <p style="color: blue">No exit</p>
 
                           <% }else { %>
                           <!-- if rate type is hourly and user parking time is sobra mag rered to(naubos na english ko) -->
-                              <!-- <% if(allbooking[i].date_exit >=
+                              <% if(allbooking[i].date_exit >=
                               allbooking[i].park_hrs && allbooking[i].date_exit !=
-                              0){ %> -->
+                              0){ %>
                               <p style="color: red">
                                 <%= allbooking[i].date_exit %>
                               </p>
-                              <!-- <% }else{ %> <%= allbooking[i].date_exit %> <% }%> <% -->
+                              <% }else{ %> <%= allbooking[i].date_exit %> <% }%> <%
                           }%>
                         </td>
                         <% if(allbooking[i].book_status == 'paid' &&
