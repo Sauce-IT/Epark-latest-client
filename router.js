@@ -520,7 +520,7 @@ router.get("/manage-booking-clerk", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const book = response.data.payload;
         sampledata = book;
-        console.log(book);
+        console.log('bookings',book);
         for (var i = 0; i < book.length; i++) {
           //check if the book is either paid or it is stil no expired
           if (
