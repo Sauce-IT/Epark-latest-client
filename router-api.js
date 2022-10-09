@@ -314,6 +314,7 @@ router.post("/add-reservation", (req, res) => {
             plate: req.body.plate,
             hrs: req.body.time,
             total_price: total_price,
+            rates: parseInt(rates)
           });
             if( req.body.plate != null && req.body.plate != "" ){
                 console.log('kompleto');

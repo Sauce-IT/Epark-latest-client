@@ -171,7 +171,9 @@
                       <tr>
                         <th>#</th>
                         <th>Slot</th>
-                        <th>Name</th>
+                        <th>Name</th>                        
+                        <th>Plate</th>                       
+                        <th>Price</th>
                         <th>Mobile</th>
                         <th>Entry</th>
                         <th>Exit</th>
@@ -185,7 +187,9 @@
                       <tr>
                         <td><%= i + 1 %></td>
                         <td><%= allbooking[i].slot_id%></td>
-                        <td><%= allbooking[i].user_name %></td>
+                        <td><%= allbooking[i].user_name %></td>                          
+                        <td><%= allbooking[i].plate %></td>                          
+                        <td><%= allbooking[i].total_price %></td>
                         <td><%= allbooking[i].user_mobile %></td>
                         <td>
                           <!-- entry table -->
@@ -320,15 +324,7 @@
                       <% } %>
                     </tbody>
                     <tfoot>
-                      <tr>
-                        <th>Slot</th>
-                        <th>Name</th>
-                        <th>Mobile</th>
-                        <th>Entry</th>
-                        <th>Exit</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                      </tr>
+                      
                     </tfoot>
                   </table>
                 </div>
