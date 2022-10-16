@@ -218,9 +218,9 @@
                             <% }else { %>
                               <!-- if rate type is hourly and user parking time is sobra mag rered to(naubos na english ko) -->
                                 <% if(allbooking[i].date_exit >= allbooking[i].park_hrs && allbooking[i].date_exit != null && allbooking[i].date_entry != null  ){ %>
-                                  <p style="color:red;"><%= allbooking[i].date_entry %></p>
+                                  <p style="color:red;"><%= allbooking[i].date_exit %></p>
                                   <% }else{ %>
-                                    <%= allbooking[i].date_entry %>
+                                    <%= allbooking[i].date_exit %>
                                   <% }%> 
                             <% }%>
                           </td>
