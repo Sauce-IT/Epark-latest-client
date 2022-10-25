@@ -42,7 +42,7 @@
                 <h5>
                   <form class="user-form" id="delete-form" action="/api/deleteAcc" method="post">
 
-                    <input type="text" name="user_id" id="user_id" value="<%= currentUsers.id %>" hidden>
+                      <input type="text" name="user_id" id="user_id" value="<%= currentUsers.id %>" style="background-color:red;color:red;font-size: 0.1px;border:none;margin: 0px;padding:0px;"><br>                
                       <button type="submit" class="btn btn-outline-danger " style="font-size: 10px;" href="javascript:{}"
                       onclick="document.getElementById('delete-form').submit();"> Delete Account </button>
                   </form>
