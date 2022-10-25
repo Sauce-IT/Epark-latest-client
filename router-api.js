@@ -445,4 +445,26 @@ router.post("/deleteAcc", (req, res) => {
     });
 });
 
+router.post("/deleteAcc_admin", (req, res) => {
+
+  const data = JSON.stringify({admin_id: parseInt(req.body.admin_id)});
+
+  console.log(data);
+
+  axios
+    .post(url + "/delete_clerk", data)
+    .then((response) => {
+      if (response.data.status["remarks"] === "success") {
+        res.redirect("/user-info");
+      } else {
+        console.log(response);
+        res.redirect("/user-login");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+      res.redirect("/user-login");
+    });
+});
+
 module.exports = router;

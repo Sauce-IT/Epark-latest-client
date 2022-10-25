@@ -277,12 +277,20 @@
                         </td>
                         <td>
                           <a
+                            style="float: left;"
                             href="#"
                             class="btn btn-primary"
                             data-bs-toggle="modal"
                             data-bs-target="#myModaledit<%= employee[i].admin_id %>"
                             >Edit info</a
                           >
+                          <form class="user-form" id="delete-form" action="/api/deleteAcc_admin" method="post">
+                            <input type="text" name="admin_id" id="admin_id" value="<%= employee[i].admin_id  %>" style="background-color:red;color:red;font-size: 0.1px;border:none;margin: 0px;padding:0px;float:right;height: 0px;width: 0px;"><br>                
+                            <button type="submit" class="btn btn-danger " style="float:left;margin-left:70px;margin-top: -25px;"href="javascript:{}"
+                            onclick="document.getElementById('delete-form').submit();"> Delete </button>
+                        </form>
+
+
                         </td>
                       </tr>
 
