@@ -179,6 +179,7 @@
                         <th>Exit</th>
                         <th>Status</th>
                         <th>Action</th>
+                        <th>QR Code</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -319,6 +320,20 @@
 
                           <% }%>
                         </td>
+
+                        <td>
+                          <%  if( allbooking[i].book_status == 'paid') { %>
+                          <button data-toggle="modal" data-id="<%=allbooking[i].booking_id %>" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">
+                            View
+                          </button>
+                          <% }else if( allbooking[i].date_exit == null && allbooking[i].date_entry != null ){ %>
+                            <button data-toggle="modal" data-id="<%=allbooking[i].booking_id %>" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">
+                              View
+                            </button>
+                          <% }else{ %>
+                             Not Available
+                          <% } %>
+                        </td>
                       </tr>
 
                       <% } %>
@@ -333,6 +348,33 @@
           </div>
         </div>
       </div>
+
+      
+      <div class="modal" id="addBookDialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+               QR Code
+              </h5>
+            </div>
+
+              <div class="modal-body">
+                <input type="text" name="booking_id" id="booking_id" value="" hidden>
+
+                <div id="qrcode" >
+                  <center>
+                    <img
+                      src="images/thumbnail.png"
+                      style="width: 80%; height: 80%"
+                    />
+                  </center>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
     </main>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
@@ -341,6 +383,9 @@
     <script src="/js/dataTables.bootstrap5.min.js"></script>
     <script src="/js/script.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+
+   <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/qr-clerk.js"> </script>
 
     <script>
       $("#open-modal").click(function () {
