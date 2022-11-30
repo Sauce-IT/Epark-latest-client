@@ -455,13 +455,11 @@ router.post("/deleteAcc_admin", (req, res) => {
         res.redirect("/user-info");
       } else {
         console.log(response);
-        alert(response.data.status["remarks"]);
         res.redirect("/user-login");
       }
     })
     .catch(function (error) {
       console.log(error);
-      alert(response.data.status["remarks"]);
       res.redirect("/user-login");
     });
 });
