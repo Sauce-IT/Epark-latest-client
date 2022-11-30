@@ -460,7 +460,7 @@ router.post("/deleteAcc_admin", (req, res) => {
         res.redirect("/user-login");
       }
     })
-    .catch(function (error) {
+    .catch((error) => {
       res.jsonp(error);
       console.log(error);
       res.redirect("/user-login");
