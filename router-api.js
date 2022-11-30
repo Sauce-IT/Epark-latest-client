@@ -455,7 +455,7 @@ router.post("/deleteAcc_admin", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         res.redirect("/user-info");
       } else {
-        res.jsonp("response" + response.data);
+        res.jsonp("response" + JSON.stringify(response.data));
         console.log(response);
         res.redirect("/user-login");
       }
