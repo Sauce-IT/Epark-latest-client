@@ -447,7 +447,7 @@ router.post("/deleteAcc_admin", (req, res) => {
   const data = JSON.stringify({ admin_id: parseInt(req.body.admin_id) });
 
   console.log(data);
-  res.jsonp(data);
+  // res.jsonp(data);
 
   axios
     .post(url + "/delete_clerk", data)
