@@ -307,35 +307,33 @@ router.post("/add-reservation", (req, res) => {
           var t = req.body.time;
           var total_price = rates * t;
 
-          
           const data = JSON.stringify({
             slot_id: req.body.reserve_slot,
             user_id: req.session.user.id,
             plate: req.body.plate,
             hrs: req.body.time,
             total_price: total_price,
-            rates: parseInt(rates)
+            rates: parseInt(rates),
           });
-            if( req.body.plate != null && req.body.plate != "" ){
-                console.log('kompleto');
-                axios
-                  .post(url + "/addReserve", data)
-                  .then((response) => {
-                    console.log(response);
-                    if (response.data.status["remarks"] === "success") {
-                      res.redirect("/home");
-                    } else {
-                      res.redirect("/home");
-                    }
-                  })
-                  .catch((err) => {
-                    console.log("error ", err);
-                  });
-              }else{
-                res.redirect("/home");
-              }
-            }
-
+          if (req.body.plate != null && req.body.plate != "") {
+            console.log("kompleto");
+            axios
+              .post(url + "/addReserve", data)
+              .then((response) => {
+                console.log(response);
+                if (response.data.status["remarks"] === "success") {
+                  res.redirect("/home");
+                } else {
+                  res.redirect("/home");
+                }
+              })
+              .catch((err) => {
+                console.log("error ", err);
+              });
+          } else {
+            res.redirect("/home");
+          }
+        }
       } else {
         res.redirect("/home");
         console.log(error);
@@ -425,7 +423,7 @@ router.post("/update-profile", (req, res) => {
 
 router.post("/deleteAcc", (req, res) => {
   const data = JSON.stringify({
-    user_id: parseInt(req.body.user_id)
+    user_id: parseInt(req.body.user_id),
   });
   console.log(data);
   axios
@@ -446,8 +444,7 @@ router.post("/deleteAcc", (req, res) => {
 });
 
 router.post("/deleteAcc_admin", (req, res) => {
-
-  const data = JSON.stringify({admin_id: parseInt(req.body.admin_id)});
+  const data = JSON.stringify({ admin_id: parseInt(req.body.admin_id) });
 
   console.log(data);
 
@@ -458,12 +455,12 @@ router.post("/deleteAcc_admin", (req, res) => {
         res.redirect("/user-info");
       } else {
         console.log(response);
-        res.redirect("/user-login");
+        // res.redirect("/user-login");
       }
     })
     .catch(function (error) {
       console.log(error);
-      res.redirect("/user-login");
+      // res.redirect("/user-login");
     });
 });
 
