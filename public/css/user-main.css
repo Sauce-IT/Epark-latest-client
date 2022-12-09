@@ -1,0 +1,39 @@
+.hero__map__slot {
+  display: flex;
+}
+
+.disable__btn {
+  pointer-events: none;
+}
+
+@media (max-width: 881px) {
+  .hero__map__slot {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  .table-responsive {
+    width: 100%;
+  }
+
+  .responsive__user__map {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__map__slot {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  .table-responsive {
+    width: 100%;
+  }
+
+  .responsive__user__map {
+    width: 100% !important;
+  }
+}

@@ -1,16 +1,16 @@
 /*-- Body Reset --*/
 body {
   overflow-x: hidden;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #616971;
 }
 
 /*============= TOP BAR HEADER =============*/
 
-.top-bar{
+.top-bar {
   background: #800000;
   height: 2.8rem;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
 .top-bar a {
@@ -25,60 +25,59 @@ body {
   height: 3rem;
 }
 
-.navbar, .navbar-inverse{
+.navbar,
+.navbar-inverse {
   font-size: 1.15rem;
   font-weight: 600;
-  letter-spacing: .1rem;
-  box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
+  letter-spacing: 0.1rem;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 
-
-
 .nav-item {
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
-.nav-btn{
+.nav-btn {
   padding: 10px 20px;
   font-weight: 500;
 }
 
 .nav-link {
-  color: #5b5555!important;
+  color: #5b5555 !important;
 }
 
 .nav-link.active,
 .nav-link:hover {
-  color: #800000!important;
+  color: #800000 !important;
 }
 
 /*============== HOME ==============*/
-.home{
+.home {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background: url(../images/truck.png);
+  /* background: url(../images/truck.png); */
   /* background: url(img/Car\ Website\ –\ 1@2x.png); */
   background-repeat: no-repeat;
   background-position: center right;
   background-size: cover;
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 2fr;
 }
-.text h1{
+.text h1 {
   font-size: 3.5rem;
   letter-spacing: 2px;
 }
-.text span{
+.text span {
   color: #800000;
 }
-.text p{
+.text p {
   margin: 00.5rem 0 1rem;
 }
 
-.form-container form{
+.form-container form {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -90,17 +89,17 @@ body {
   /* color: #fff; */
   padding: 20px;
   border-radius: 0.5rem;
-  
 }
-.input-box{
+.input-box {
   flex: 1 1 7rem;
   display: flex;
   flex-direction: column;
 }
-.input-box span{
+.input-box span {
   font-weight: 500;
 }
-.input-box input, select{
+.input-box input,
+select {
   padding: 7px;
   outline: none;
   border: none;
@@ -108,9 +107,9 @@ body {
   border-radius: 0.5rem;
   font-size: 1rem;
 }
-.form-container form .submit-btn{
+.form-container form .submit-btn {
   flex: 1 1 7rem;
-  padding: 10px 34px ;
+  padding: 10px 34px;
   border: none;
   border-radius: 0.5rem;
   /* background: var(white); */
@@ -120,7 +119,7 @@ body {
 }
 
 .modal-header {
-  background: #3B444B;
+  background: #3b444b;
   color: #fff;
 }
 
@@ -129,7 +128,7 @@ body {
   color: red;
 }
 
-.countdownContainer{
+.countdownContainer {
   position: absolute;
   top: 95%;
   left: 50%;
@@ -141,52 +140,50 @@ body {
   box-shadow: 0 0 5px 3px #ccc;
 }
 
-
-
 /*============= CAROUSEL =============*/
 
 #carousel {
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, .1);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .carouse-inner {
-  max-height: 38rem!important;
+  max-height: 38rem !important;
 }
 
 /*---Change Carousel Transition Speed --*/
 .carousel-item-next,
 .carousel-item-prev,
-.carousel-item.active{
+.carousel-item.active {
   transition: transform 1.2s ease;
 }
 
 /*-- Carousel Content --*/
 
-.carousel-caption{
+.carousel-caption {
   position: absolute;
   top: 54%;
   transform: translateY(-50%);
   text-transform: uppercase;
 }
 
-.bg-custom{
-  background-color: rgba(0, 0, 0, .4);
+.bg-custom {
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   border-radius: 1rem;
 }
 
-.carousel-caption h1{
+.carousel-caption h1 {
   font-size: 3.8rem;
-  text-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 1);
+  text-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 1);
 }
 
 .border-primary {
-  border-top: .2rem solid #4981b3!important;
+  border-top: 0.2rem solid #4981b3 !important;
 }
 
-.carousel-caption h3{
+.carousel-caption h3 {
   font-size: 2.2rem;
-  text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 1);
+  text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 1);
 }
 
 .btn-lg {
@@ -195,25 +192,25 @@ body {
   font-size: 1rem;
 }
 
-.btn-danger{
+.btn-danger {
   background-color: #ac2615;
-  border: .05rem solid #ac2615;
+  border: 0.05rem solid #ac2615;
 }
 
-.btn-primary{
+.btn-primary {
   background-color: #4981b3;
-  border: .05rem solid #4981b3;
+  border: 0.05rem solid #4981b3;
 }
 
 .btn-primary:hover,
-.btn-primary:hover{
-  background-color: #68a0d2!important;
-  border: .05rem solid #68a0d2!important;
+.btn-primary:hover {
+  background-color: #68a0d2 !important;
+  border: 0.05rem solid #68a0d2 !important;
 }
 /*===== FIXED BACKGROUND IMG =====*/
 
-.fixed{
-  background-image: url('../images/car-parking.jpg');
+.fixed {
+  background-image: url("../images/car-parking.jpg");
   position: fixed;
 }
 
@@ -222,27 +219,24 @@ body {
   overflow: hidden; /*-- Correction for iOS --*/
 }
 
-
 /*-- gradient Navbar --*/
-.gradient{
+.gradient {
   background-image: linear-gradient(to right, #4981b3, #ac2615);
-  min-height: 0!important;
-  padding: .4rem 0!important;
+  min-height: 0 !important;
+  padding: 0.4rem 0 !important;
 }
 
-.gradient .svg-inline--fa{
+.gradient .svg-inline--fa {
   margin: 0 auto;
   color: white;
   font-size: 2rem;
 }
 
-
 /*===== Grid for parking slots =====*/
-
 
 /*============= FOOTER =============*/
 
-footer{
+footer {
   background-color: #383838;
   padding: 1rem 2rem 3rem;
 }
@@ -252,13 +246,14 @@ footer img {
   margin: 1.5rem auto;
 }
 
-footer p, footer a,
+footer p,
+footer a,
 .socket a {
   color: white;
   text-decoration: none;
 }
 
-ul.social{
+ul.social {
   list-style-type: none;
   display: flex;
   max-width: 16rem;
@@ -274,75 +269,75 @@ footer .svg-inline--fa {
   font-size: 2.3rem;
 }
 
-footer .svg-inline--fa:hover{
+footer .svg-inline--fa:hover {
   color: #b30000;
 }
 
 /*============= SOCKET =============*/
 
-.socket{
+.socket {
   background-color: #222222;
-  border-top: .1rem solid #4981b3;
+  border-top: 0.1rem solid #4981b3;
 }
 
 /*============= MEDIA QUERIES =============*/
 
 /* Devices under 1199px (xl) */
 @media (max-width: 1199.98px) {
-  .carousel-caption h1{
+  .carousel-caption h1 {
     font-size: 2.8rem;
   }
-   
-  .carousel-caption h3{
+
+  .carousel-caption h3 {
     font-size: 1.8rem;
   }
 
-  .nav-btn{
+  .nav-btn {
     color: #ac2615;
   }
 }
 /* Devices under 992 (lg) */
 @media (max-width: 991.98px) {
-  .carousel-caption h1{
+  .carousel-caption h1 {
     font-size: 2.5rem;
   }
-   
-  .carousel-caption h3{
+
+  .carousel-caption h3 {
     font-size: 1.5rem;
   }
 
   .btn-lg {
-    font-size: .95rem;
+    font-size: 0.95rem;
   }
 
-  .nav-btn{
+  .nav-btn {
     color: #ac2615;
   }
-  section{
+  section {
     padding: 50px 40px;
-}
-}
-
-@media (max-width:881px){
-  .home{
-      background-position: left;
-  }
-  .form-container form{
-      bottom: 0.2rem;
-      left: 40px;
   }
 }
 
-@media (max-width: 768px){
-  .home{
+@media (max-width: 881px) {
+  .home {
+    background-position: left;
+  }
+  .form-container form {
+    bottom: 0.2rem;
+    left: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
     grid-template-columns: 1fr;
-}
-  .form-container form{
-    position:unset;
-}
-.text h1{
-  font-size: 3rem;
-}
+  }
+  .form-container form {
+    position: unset;
+  }
+  .text h1 {
+    font-size: 3rem;
+  }
 }
 
 /* @media (max-width: 740px){
@@ -352,23 +347,22 @@ footer .svg-inline--fa:hover{
   }
 } */
 
-@media (max-width: 568px){
- 
-  .form-container{
-      padding-top: 2rem;
+@media (max-width: 568px) {
+  .form-container {
+    padding-top: 2rem;
   }
 }
 
-@media (max-width: 350px){
-  section{
+@media (max-width: 350px) {
+  section {
     padding: 50px 14px;
-}
-.text h1{
-  font-size: 2rem;
-}
-  .form-container{
-  padding-top: 2rem;
-}
+  }
+  .text h1 {
+    font-size: 2rem;
+  }
+  .form-container {
+    padding-top: 2rem;
+  }
 }
 @media (min-width: 768px) {
   .popup {
@@ -409,7 +403,8 @@ Extra (xl) large devices (large desktops, 1200px and up)
 =============*/
 
 /*-- Bootstrap Mobile Gutter Fix --*/
-.row, .container-fluid {
+.row,
+.container-fluid {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
@@ -418,7 +413,7 @@ Extra (xl) large devices (large desktops, 1200px and up)
 .fixed-background {
   position: relative;
   width: 100%;
-  z-index: 1000!important;
+  z-index: 1000 !important;
 }
 .fixed-wrap {
   clip: rect(0, auto, auto, 0);
@@ -430,7 +425,7 @@ Extra (xl) large devices (large desktops, 1200px and up)
   z-index: -999 !important;
 }
 .fixed {
-  z-index: -999!important;
+  z-index: -999 !important;
   display: block;
   top: 0;
   left: 0;

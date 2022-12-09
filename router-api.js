@@ -329,14 +329,15 @@ router.post("/add-reservation", (req, res) => {
             rates: parseInt(rates),
           });
           if (req.body.plate != null && req.body.plate != "") {
-            console.log("kompleto");
             axios
               .post(url + "/addReserve", data)
               .then((response) => {
-                console.log(response);
+                console.log(response.data.status);
                 if (response.data.status["remarks"] === "success") {
+                  req.session.errorReport = response.data.status;
                   res.redirect("/home");
                 } else {
+                  req.session.errorReport = response.data.status;
                   res.redirect("/home");
                 }
               })

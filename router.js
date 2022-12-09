@@ -176,23 +176,32 @@ router.get("/home", (req, res) => {
 
                     console.log(error);
                   }
+
+                  let message = req.session.errorReport;
+                  req.session.errorReport = null;
+                  console.log(message);
+
                   // navigation
                   res.render("main", {
                     slots: sampledata,
                     userbook: userbook,
                     rates: rates,
                     currentUsers: req.session.user,
+                    errorreport: message,
                   });
                 })
                 .catch(function (error) {
+                  let message = req.session.errorReport;
+                  req.session.errorReport = null;
                   userbook = null;
-                  console.log(error);
+                  console.log(message);
                   // navigation
                   res.render("main", {
                     slots: sampledata,
                     userbook: userbook,
                     rates: rates,
                     currentUsers: req.session.user,
+                    errorreport: message,
                   });
                 });
             } else {
