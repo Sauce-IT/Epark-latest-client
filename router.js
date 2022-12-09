@@ -36,28 +36,23 @@ router.get("/", (req, res) => {
 });
 
 router.get("/getBooking", (req, res) => {
-
   axios
     .post(url + "/getBookinglist")
     .then((response) => {
-        if (response.data.status["remarks"] === "success") {
-          const slot = response.data.payload;
-          sampledata = slot;
-          console.log(sampledata);
-         
-            res.render("getBooking_list",{ slots: sampledata});
- 
-         
-        } else {
-          // res.redirect("/getBooking_list");
-        }
+      if (response.data.status["remarks"] === "success") {
+        const slot = response.data.payload;
+        sampledata = slot;
+        console.log(sampledata);
+
+        res.render("getBooking_list", { slots: sampledata });
+      } else {
+        // res.redirect("/getBooking_list");
+      }
     })
     .catch(function (error) {
       console.log(error);
     });
-
 });
-
 
 router.get("/user-login", (req, res) => {
   if (req.session.user) return res.redirect("/home");
@@ -220,7 +215,10 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/register", (req, res) => {
-  res.render("user-register");
+  let message = req.session.errorRegister;
+  req.session = null;
+
+  res.render("user-register", { errorRegister: message });
 });
 
 router.get("/user-profile", (req, res) => {
@@ -407,7 +405,6 @@ router.get("/manage-booking", (req, res) => {
                 });
             }
           }
-        
         }
 
         // available today slot

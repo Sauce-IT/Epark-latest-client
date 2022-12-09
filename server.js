@@ -7,7 +7,7 @@ const session = require("cookie-session");
 const { v4: uuidv4 } = require("uuid");
 const router = require("./router");
 const router_api = require("./router-api");
-const SerialPort = require("serialport");
+// const SerialPort = require("serialport");
 const axios = require("axios").default;
 
 const app = express();
@@ -18,7 +18,6 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 
 const url = "https://epark-project-api.herokuapp.com/";
-
 
 // comment this if you are going to deploy the application
 // const parsers = SerialPort.parsers;
