@@ -321,6 +321,7 @@ router.post("/add-reservation", (req, res) => {
           var total_price = rates * t;
 
           const data = JSON.stringify({
+            vehicle_type: req.body.vehicle_type,
             slot_id: req.body.reserve_slot,
             user_id: req.session.user.id,
             plate: req.body.plate,
