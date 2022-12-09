@@ -16,6 +16,7 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
     <!-- Style CSS -->
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/user-main.css" />
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap"
@@ -101,7 +102,8 @@
             data-bs-toggle="modal"
             data-bs-target="#myModal4"
             >Reserve now</a
-          >' <% }%> <% if(userbook != null ) {%> <% for(var i = 0; i <
+          >
+          <% }%> <% if(userbook != null ) {%> <% for(var i = 0; i <
           userbook.length; i++) {%> <% if(userbook[i].book_status == 'expired'
           || userbook[i].book_status == 'exited' ) { %>
           <a
@@ -110,7 +112,8 @@
             data-bs-toggle="modal"
             data-bs-target="#myModal4"
             >Reserve now <% userbook %></a
-          >' <% }else {%>
+          >
+          <% }else {%>
           <a
             href="#"
             class="btn btn-outline-dark btn-md submit-btn"
@@ -120,6 +123,70 @@
             >View Reservation</a
           >
           <% }%> <% }%> <% }%>
+        </div>
+
+        <div class="hero__map__slot">
+          <div class="table-responsive col-lg-6 bg-light" style="margin: auto">
+            <table
+              class="table table-light table-striped table-hover table-borderless"
+            >
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Slot #</th>
+                  <th scope="col">Availability</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i = 0; i < slots.length; i++) {%>
+                <tr>
+                  <th scope="row"><%= slots[i].Slot_id %></th>
+                  <% if(slots[i].Availability == 'Available') {%>
+                  <td>
+                    <a
+                      href="#"
+                      class="btn btn-success disable__btn"
+                      style="width: 130px"
+                      ><%= slots[i].Availability %></a
+                    >
+                  </td>
+                  <% }%> <% if(slots[i].Availability == 'Reserved') {%>
+                  <td>
+                    <a
+                      href="#"
+                      class="btn btn-warning disable__btn"
+                      style="width: 130px"
+                      ><%= slots[i].Availability %></a
+                    >
+                  </td>
+                  <% }%> <% if(slots[i].Availability == 'Occupied') {%>
+                  <td>
+                    <a
+                      href="#"
+                      class="btn btn-primary disable__btn"
+                      style="width: 130px"
+                      ><%= slots[i].Availability %></a
+                    >
+                  </td>
+                  <% }%> <% if(slots[i].Availability == 'Maintenance') {%>
+                  <td>
+                    <a
+                      href="#"
+                      class="btn btn-danger disable__btn"
+                      style="width: 130px"
+                      ><%= slots[i].Availability %></a
+                    >
+                  </td>
+                  <% }%>
+                </tr>
+                <% }%>
+              </tbody>
+            </table>
+          </div>
+          <img
+            src="/images/user-map.png"
+            alt=""
+            class="w-50 responsive__user__map"
+          />
         </div>
       </section>
     </div>
@@ -746,7 +813,7 @@
         <div class="fixed"></div>
       </div>
     </div>
-    <section>
+    <!-- <section>
       <div class="table-responsive col-lg-6" style="margin: auto">
         <table
           class="table table-light table-striped table-hover table-borderless"
@@ -791,7 +858,7 @@
           </tbody>
         </table>
       </div>
-    </section>
+    </section> -->
 
     <!-- End Fixed Background IMG -->
 
