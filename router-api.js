@@ -270,6 +270,18 @@ router.post("/user-login", (req, res) => {
 
 //user registration
 router.post("/register-user", (req, res) => {
+  if (/\d/.test(req.body.user_name) || req.body.user_name.length < 2) {
+    req.session.errorRegister = "Invalid user name";
+    res.redirect("/register");
+    return;
+  }
+
+  if (req.body.user_mobile.length !== 11) {
+    req.session.errorRegister = "Invalid mobile number";
+    res.redirect("/register");
+    return;
+  }
+
   const loginData = JSON.stringify({
     user_name: req.body.user_name,
     user_email: req.body.user_email,
@@ -285,6 +297,7 @@ router.post("/register-user", (req, res) => {
         res.redirect("/user-login");
       } else {
         req.session.message = response.data.status["message"];
+        req.session.errorRegister = "Email is already registered";
         res.redirect("/register");
       }
     })
