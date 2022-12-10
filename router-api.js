@@ -252,10 +252,10 @@ router.get("/validate/:user", (req, res) => {
       JSON.stringify({ user_email: req.params.user })
     )
     .then((response) => {
-      res.json({ user: req.params.user });
-      // req.session.message = response.data.status["message"];
-      // req.session.type = "success";
-      // res.redirect("/user-login");
+      // res.json({ user: req.params.user });
+      req.session.message = response.data.status["message"];
+      req.session.type = "success";
+      res.redirect("/user-login");
     });
 });
 
