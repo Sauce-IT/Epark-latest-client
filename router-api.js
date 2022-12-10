@@ -245,7 +245,7 @@ router.post("/admin-logout", (req, res) => {
 // users===========================================================================================================
 
 router.get("/validate/:user", (req, res) => {
-  res.json({ user: req.user });
+  res.json({ user: req.params.user });
   // axios.post(url + "/validate-user", loginData).then((response) => {
   //   req.session.message = response.data.status["message"];
   //   req.session.type = "success";
