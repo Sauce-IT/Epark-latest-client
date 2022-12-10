@@ -264,6 +264,7 @@ router.post("/user-login", (req, res) => {
       }
     })
     .catch(function (error) {
+      console.log(error);
       res.redirect("/user-login");
     });
 });
