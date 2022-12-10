@@ -244,6 +244,14 @@ router.post("/admin-logout", (req, res) => {
 });
 // users===========================================================================================================
 
+router.get("/validate", (req, res) => {
+  res.json({ test: true });
+  // axios.post(url + "/validate-user", loginData).then((response) => {
+  //   req.session.message = response.data.status["message"];
+  //   res.redirect("/user-login");
+  // });
+});
+
 //user login
 router.post("/user-login", (req, res) => {
   const loginData = JSON.stringify({
