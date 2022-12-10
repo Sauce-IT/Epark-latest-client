@@ -58,9 +58,10 @@ router.get("/user-login", (req, res) => {
   if (req.session.user) return res.redirect("/home");
 
   let message = req.session.message;
+  let type = req.session.type;
   req.session = null;
 
-  res.render("user-login", { message: message });
+  res.render("user-login", { message: message, type: type });
 });
 
 router.get("/logout", (req, res) => {

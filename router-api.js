@@ -244,6 +244,21 @@ router.post("/admin-logout", (req, res) => {
 });
 // users===========================================================================================================
 
+router.get("/validate/:user", (req, res) => {
+  // res.json({ user: req.params.user });
+  axios
+    .post(
+      url + "/validate-user",
+      JSON.stringify({ user_email: req.params.user })
+    )
+    .then((response) => {
+      // res.json({ user: req.params.user });
+      req.session.message = response.data.status["message"];
+      req.session.type = "success";
+      res.redirect("/user-login");
+    });
+});
+
 //user login
 router.post("/user-login", (req, res) => {
   const loginData = JSON.stringify({
@@ -264,6 +279,7 @@ router.post("/user-login", (req, res) => {
       }
     })
     .catch(function (error) {
+      console.log(error);
       res.redirect("/user-login");
     });
 });
@@ -321,6 +337,7 @@ router.post("/add-reservation", (req, res) => {
           var total_price = rates * t;
 
           const data = JSON.stringify({
+            vehicle_type: req.body.vehicle_type,
             slot_id: req.body.reserve_slot,
             user_id: req.session.user.id,
             plate: req.body.plate,
