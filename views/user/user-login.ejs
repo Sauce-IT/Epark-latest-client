@@ -31,7 +31,11 @@
                         
                         <h2 class="form-title">Login</h2>
                         <% if(message !== undefined){ %>
+                            <% if(type !== undefined){ %>
                             <div class="alert alert-warning text-center"><%= message %></div>
+                            <% }else{ %>
+                                <div class="alert alert-success text-center"><%= message %></div>
+                            <% } %>
                         <% } %>
                         <p>Login your account</p>
                         <br>
