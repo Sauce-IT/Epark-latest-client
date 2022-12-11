@@ -136,7 +136,37 @@
             
               </form>
             </div>
+            <div class="col-sm-12 bg-white">
+              <div style="margin-top: 20px;">
+                <hr>
+                
+                  <h3>Reservation History</h3>
+                  <table class="table table-striped">
+                <thead>
+                  <th>Plate</th>
+                  <th>Status</th>
+                  <th>Total Price</th>
+                  <th>Date Entry</th>
+                  <th>Date Exit</th>
+                  <th>Date Paid</th>
+                </thead>
+                <tbody>
+                  <% for(var i = 0; i < userbook.length; i++) {%>
+                    <tr>
+                      <td> <%= userbook[i].plate %></td>
+                      <td><%= userbook[i].book_status	%> </td>
+                      <td><%= userbook[i].total_price	 %> </td>
+                      <td><%= userbook[i].date_entry %> </td>
+                      <td><%= userbook[i].date_exit	 %> </td>
+                      <td><%= userbook[i].paid_date	 %> </td>
+                    </tr>
+                  <% }%>
+                </tbody>
+              </table>
+            </div>
+            </div>
           </div>
+          
         </div>
       </div>
     </div>

@@ -165,9 +165,36 @@
           <div class="col-md-12 mb-3">
             <div class="card">
               <div class="card-header">
-                <span><i class="bi bi-table me-2"></i></span> Data Table
-              </div>
+                Data Table
+                <!-- <div style="float:left;width: 14%;">
+                  <h4>Filter<span><i class="bi bi-table me-2"></i></span></h4>
+                </div>
+               
+                <button type="text" class="btn btn-primary"style="float:right;margin-left:6px;">Filter</button>
+              
+                <div style="float:right;width: 14%;margin-left:6px;">
+                  <p ><input type="text"  id="date"  class="form-control" placeholder="Date"></p>
+                </div>
+                <div style="float:right;width: 14%;margin-left:6px;">
+                  <select type="text"  id="vehicle"  class="form-control">
+                    <option value="" >All Vehicle</option>
+                    <option value="Motorcycle">Motorcycle</option>
+                    <option value="Pickup truck ">Pickup truck </option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Van">Van</option>
+                  </select>
+                </div>
+                <div style="float:right;width: 14%;margin-left:6px;">
+                  <input type="text" id="plate"  placeholder="Plate number"  class="form-control">
+                </div>
+                <div style="float:right;width: 14%;margin-left:6px;">
+                  <input type="text" id="name" placeholder="Name" class="form-control">
+              </div> -->
+            </div>
               <div class="card-body">
+                <br>
+
                 <div class="table-responsive">
                   <table
                     id="example"
@@ -276,7 +303,23 @@
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap5.min.js"></script>
     <script src="/js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- <script>
+      $(document).ready(function(){
+        $("button").click(function(){
+          // $.get("demo_test.asp", function(data, status){
+          //   alert("Data: " + data + "\nStatus: " + status);
+          // });
+          var name = document.getElementById("name").value;
+          var date = document.getElementById("date").value;
+          var vehicle = document.getElementById("vehicle").value;
+          var plate = document.getElementById("plate").value;
 
+          console.log(name,date,vehicle,plate);
+        });
+        
+       });
+      </script> -->
  
   </body>
 </html>

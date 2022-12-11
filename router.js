@@ -233,7 +233,30 @@ router.get("/register", (req, res) => {
 
 router.get("/user-profile", (req, res) => {
   if (!req.session.user) return res.redirect("/user-login");
-  res.render("user-profile", { currentUsers: req.session.user });
+  const data = JSON.stringify({
+    user_id: req.session.user.id,
+  });
+
+  // get user info
+  axios
+    .post(url + "/getHistory",data)
+    .then((response) => {
+      if (response.data.status["remarks"] === "success") {
+        const book = response.data.payload;
+        userbook = book;
+        console.log("book", book);
+      } else {
+        userbook = sampledata;
+        res.redirect("/home");
+        console.log(error);
+      }
+
+      res.render("user-profile", { currentUsers: req.session.user,userbook: userbook });
+
+    })
+    .catch(function (error) {
+      userbook = sampledata;
+    });
 });
 
 // admin route ===================================================================================

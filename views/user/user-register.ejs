@@ -52,8 +52,9 @@
                   <label for="Mobile">
                     <i class="zmdi zmdi-phone material-icons-name"></i
                   ></label>
-                  <input
-                    type="number"
+                  <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      type = "number"
+                      maxlength = "11"
                     name="user_mobile"
                     id="user_mobile"
                     required="_required"

@@ -39,7 +39,7 @@ barchart.forEach(function (chart) {
           labels: label,
           datasets: [
             {
-              label: "# of Available Slots",
+              label: "Daily Earnings",
               data: data,
               backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
@@ -65,6 +65,12 @@ barchart.forEach(function (chart) {
           scales: {
             y: {
               beginAtZero: true,
+              ticks:{
+                callback:(value,index,values) =>{
+                  console.log(values)
+                  return `\u20B1 ${value} .00`;
+                }
+              }
             },
           },
         },
@@ -103,7 +109,7 @@ linechart.forEach(function (chart) {
           labels: label1,
           datasets: [
             {
-              label: "# of Users",
+              label: "Daily Earnings",
               data: data1,
               backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
@@ -129,6 +135,12 @@ linechart.forEach(function (chart) {
           scales: {
             y: {
               beginAtZero: true,
+              ticks:{
+                callback:(value,index,values) =>{
+                  console.log(values)
+                  return `\u20B1 ${value}.00`;
+                }
+              }
             },
           },
         },

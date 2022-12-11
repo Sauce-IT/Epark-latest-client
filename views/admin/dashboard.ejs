@@ -222,12 +222,15 @@
           <div class="col-md-3 mb-3">
             <div class="card bg-success text-white h-100">
               <div class="card-body py-5">
-                Available Slot <% var total = 0 %> <% for(var i = 0; i <
-                available.length; i++) {%> <% if( available[i].Availability ==
-                'Available' ) {%> <% total = i + 1 %> <% }%> <% }%>
+                Available Slot
+                <% var total = 0; %> 
+                <% for(var i = 0; i < available.length; i++) {%> 
+                  <% if( available[i].Availability == 'Available' ) 
+                  {%> <% total = total + 1; %> <% }%>
+                 <% }%>
 
                 <span style="float: right; font-size: 20px; padding: 5px"
-                  >(<%= total %>)</span
+                  >(<%= total; %>)</span
                 >
               </div>
               <div class="card-footer d-flex">
@@ -245,7 +248,7 @@
             <div class="card h-100">
               <div class="card-header">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                Parking SLot IN and OUT comparison
+                Daily earnings bar chart
               </div>
               <div class="card-body">
                 <canvas class="barchart" width="400" height="200"></canvas>
@@ -257,9 +260,10 @@
             <div class="card h-100">
               <div class="card-header">
                 <span class="me-2"><i class="bi bi-graph-up"></i></span>
-                Line Chart Example
+                Daily earnings Line Chart 
               </div>
               <div class="card-body">
+                
                 <canvas class="linechart" width="400" height="200"></canvas>
               </div>
             </div>
