@@ -18,7 +18,9 @@ function checkpass() {
       if (res.status["remarks"] === "failed") {
         document.getElementById("newPass").value = "Email Not Found!";
       } else {
-        document.getElementById("newPass").value = res.payload;
+        document.getElementById("newPass").value =
+          "We sent an email with your new password";
+        // document.getElementById("newPass").value = res.payload;
         // "We sent an email with your new password";
       }
     });
