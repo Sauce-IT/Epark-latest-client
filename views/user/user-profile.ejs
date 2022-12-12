@@ -151,16 +151,26 @@
                   <th>Date Paid</th>
                 </thead>
                 <tbody>
-                  <% for(var i = 0; i < userbook.length; i++) {%>
-                    <tr>
-                      <td> <%= userbook[i].plate %></td>
-                      <td><%= userbook[i].book_status	%> </td>
-                      <td><%= userbook[i].total_price	 %> </td>
-                      <td><%= userbook[i].date_entry %> </td>
-                      <td><%= userbook[i].date_exit	 %> </td>
-                      <td><%= userbook[i].paid_date	 %> </td>
-                    </tr>
+                  <% if(userbook != null ){%>
+                    <% for(var i = 0; i < userbook.length; i++) {%>
+                      <tr>
+                        <td> <%= userbook[i].plate %></td>
+                        <td><%= userbook[i].book_status	%> </td>
+                        <td><%= userbook[i].total_price	 %> </td>
+                        <td><%= userbook[i].date_entry %> </td>
+                        <td><%= userbook[i].date_exit	 %> </td>
+                        <td><%= userbook[i].paid_date	 %> </td>
+                      </tr>
+                    <% }%>
+                  <% } if(userbook == null ){%>
+                  <tr>
+                    <center>
+                      <td colspan="6"> No history found</td>
+
+                    </center>
+                  </tr>
                   <% }%>
+                  
                 </tbody>
               </table>
             </div>

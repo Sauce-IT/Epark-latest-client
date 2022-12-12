@@ -246,8 +246,7 @@ router.get("/user-profile", (req, res) => {
         userbook = book;
         console.log("book", book);
       } else {
-        userbook = sampledata;
-        res.redirect("/home");
+        userbook = null;
         console.log(error);
       }
 
@@ -255,7 +254,7 @@ router.get("/user-profile", (req, res) => {
 
     })
     .catch(function (error) {
-      userbook = sampledata;
+      userbook = null;
     });
 });
 
