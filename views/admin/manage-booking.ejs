@@ -173,13 +173,22 @@
                 <button type="text" class="btn btn-primary"style="float:right;margin-left:6px;">Filter</button>
               
                 <div style="float:right;width: 14%;margin-left:6px;">
-                  <p ><input type="text"  id="date"  class="form-control" placeholder="Date"></p>
+                  <select type="text"  id="status"  class="form-control">
+                    <option value="">All Status</option>
+                    <option value="exited">Exited</option>
+                    <option value="unpaid">Unpaid</option>
+                    <option value="entered">Entered</option>
+                    <option value="expired">Expired</option>
+                    <option value="canceled">Canceled</option>
+                    <option value="reserved">Reserved</option>
+                    <option value="paid">Paid</option>
+                  </select>
                 </div>
                 <div style="float:right;width: 14%;margin-left:6px;">
                   <select type="text"  id="vehicle"  class="form-control">
                     <option value="" >All Vehicle</option>
                     <option value="Motorcycle">Motorcycle</option>
-                    <option value="Pickup truck ">Pickup truck </option>
+                    <option value="Pickup truck">Pickup truck </option>
                     <option value="Sedan">Sedan</option>
                     <option value="SUV">SUV</option>
                     <option value="Van">Van</option>
@@ -215,10 +224,10 @@
                         <th>Status</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="datatable">
 								      <% for(var i = 0; i < allbooking.length; i++) {%>
                       <!-- <input value="" hidden> -->
-                        <tr>
+                        <tr >
                           <td><%= i + 1 %></td>
                           <td><%= allbooking[i].slot_id %></td>
                           <td><%= allbooking[i].user_name %></td>
@@ -287,7 +296,7 @@
                       </tr>
 
                       <% } %>
-                    </tfoot>
+                    </tbody>
                   </table>
                 </div>
               </div>
