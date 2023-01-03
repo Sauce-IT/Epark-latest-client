@@ -6,7 +6,8 @@ $(document).ready(function () {
     var plate = document.getElementById("plate").value;
     var table;
     var data;
-    var i = 0;
+      var qrcode;
+      var i = 0;
     console.log(name, status, plate);
     const url = "https://epark-project-api.herokuapp.com";
 
@@ -26,11 +27,8 @@ $(document).ready(function () {
       var entry;
       var exit;
       var unpaid;
-
       for (let index = 0; index < data.length; index++) {
         const element = data[index];
-
-        console.log(element.user_name);
         i += 1;
         //entry
         if (
@@ -71,7 +69,8 @@ $(document).ready(function () {
         if (element.book_status == "paid" && element.date_entry == null) {
           status =
             "<a href='#' class='btn btn-warning' style='width: 100px;'>Reserved</a>";
-        }
+            
+          }
         if (element.book_status == "unpaid") {
           status =
             "<a href='#' class='btn btn-dark' style='width: 100px;'>Unpaid</a>";
@@ -92,7 +91,7 @@ $(document).ready(function () {
         }
 
         if (element.book_status == "unpaid") {
-          console.log(element.book_status);
+         
           unpaid = `
           <div class="d-flex gap-1">
               <form
@@ -144,43 +143,54 @@ $(document).ready(function () {
         } else {
           unpaid = "";
         }
+        if (element.book_status == "paid") {
+          qrcode =  `<button+
+                      data-toggle="modal"
+                      data-id="${element.booking_id} "
+                      class="open-AddBookDialog btn btn-primary"
+                      href="#addBookDialog"> View
+                    </button>`;
+        }else{
+          qrcode = "Not Available"; 
+        }
+     
 
         table +=
-          " <tr > " +
-          "<td>" +
-          i +
-          "</td>" +
-          "<td>" +
-          element.slot_id +
-          " </td>" +
-          "<td>" +
-          element.user_name +
-          " </td>" +
-          "<td>" +
-          element.plate +
-          " </td>" +
-          "<td>" +
-          element.total_price +
-          "</td>" +
-          "<td>" +
-          element.user_mobile +
-          " </td>" +
-          "<td>" +
-          entry +
-          "</td>" +
-          "<td>" +
-          exit +
-          "</td>" +
-          "<td>" +
-          status +
-          "</td>" +
-          "<td>" +
-          unpaid +
-          "</td>" +
-          "<td>" +
-          "element.vehicle_type" +
-          "</td>" +
-          "</tr>";
+            " <tr > " +
+            "<td>" +
+            i +
+            "</td>" +
+            "<td>" +
+            element.slot_id +
+            " </td>" +
+            "<td>" +
+            element.user_name +
+            " </td>" +
+            "<td>" +
+            element.plate +
+            " </td>" +
+            "<td>" +
+            element.total_price +
+            "</td>" +
+            "<td>" +
+            element.user_mobile +
+            " </td>" +
+            "<td>" +
+            entry +
+            "</td>" +
+            "<td>" +
+            exit +
+            "</td>" +
+              "<td>" +
+                status +
+              "</td>" +
+            "<td>" +
+                unpaid +
+            "</td>" +
+              "<td>" +
+                 qrcode +
+              "</td>" +
+            "</tr>";
       }
       document.getElementById("datatable2").innerHTML = table;
       console.log(data);
