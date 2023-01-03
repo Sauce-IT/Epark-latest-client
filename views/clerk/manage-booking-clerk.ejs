@@ -149,16 +149,59 @@
           <div class="col-md-12 mb-3">
             <div class="card">
               <div class="card-header">
-                <span><i class="bi bi-table me-2"></i></span> Data Table
-                <!-- <button
-                  type="button"
-                  id="open-modal"
-                  class="btn btn-outline-dark btn-md submit-btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#myModal"
+                Data Table
+                <div style="float: left; width: 14%">
+                  <h4>
+                    Filter<span><i class="bi bi-table me-2"></i></span>
+                  </h4>
+                </div>
+
+                <button
+                  type="text"
+                  class="btn btn-primary"
+                  style="float: right; margin-left: 6px"
                 >
-                  Scan QR Code
-                </button> -->
+                  Filter
+                </button>
+
+                <div style="float: right; width: 14%; margin-left: 6px">
+                  <select type="text" id="status" class="form-control">
+                    <option value="">All Status</option>
+                    <option value="exited">Exited</option>
+                    <option value="unpaid">Unpaid</option>
+                    <option value="entered">Entered</option>
+                    <option value="expired">Expired</option>
+                    <option value="canceled">Canceled</option>
+                    <option value="reserved">Reserved</option>
+                    <option value="paid">Paid</option>
+                  </select>
+                </div>
+                <!-- <div style="float: right; width: 14%; margin-left: 6px">
+                  <select type="text" id="vehicle" class="form-control">
+                    <option value="">All Vehicle</option>
+                    <option value="Motorcycle">Motorcycle</option>
+                    <option value="Pickup truck">Pickup truck</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Van">Van</option>
+                  </select>
+                </div> -->
+                <div style="float: right; width: 14%; margin-left: 6px">
+                  <input
+                    type="text"
+                    id="plate"
+                    placeholder="Plate number"
+                    class="form-control"
+                  />
+                </div>
+                <div style="float: right; width: 14%; margin-left: 6px">
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Name"
+                    class="form-control"
+                  />
+                </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -171,8 +214,8 @@
                       <tr>
                         <th>#</th>
                         <th>Slot</th>
-                        <th>Name</th>                        
-                        <th>Plate</th>                       
+                        <th>Name</th>
+                        <th>Plate</th>
                         <th>Price</th>
                         <th>Mobile</th>
                         <th>Entry</th>
@@ -182,14 +225,14 @@
                         <th>QR Code</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="datatable2">
                       <% for(var i = 0; i < allbooking.length; i++) {%>
                       <!-- <input value="" hidden> -->
                       <tr>
                         <td><%= i + 1 %></td>
                         <td><%= allbooking[i].slot_id%></td>
-                        <td><%= allbooking[i].user_name %></td>                          
-                        <td><%= allbooking[i].plate %></td>                          
+                        <td><%= allbooking[i].user_name %></td>
+                        <td><%= allbooking[i].plate %></td>
                         <td><%= allbooking[i].total_price %></td>
                         <td><%= allbooking[i].user_mobile %></td>
                         <td>
@@ -214,13 +257,13 @@
 
                           <% }else { %>
                           <!-- if rate type is hourly and user parking time is sobra mag rered to(naubos na english ko) -->
-                              <% if(allbooking[i].date_exit >=
-                              allbooking[i].park_hrs && allbooking[i].date_exit !=
-                              0){ %>
-                              <p style="color: red">
-                                <%= allbooking[i].date_exit %>
-                              </p>
-                              <% }else{ %> <%= allbooking[i].date_exit %> <% }%> <%
+                          <% if(allbooking[i].date_exit >=
+                          allbooking[i].park_hrs && allbooking[i].date_exit !=
+                          0){ %>
+                          <p style="color: red">
+                            <%= allbooking[i].date_exit %>
+                          </p>
+                          <% }else{ %> <%= allbooking[i].date_exit %> <% }%> <%
                           }%>
                         </td>
                         <% if(allbooking[i].book_status == 'paid' &&
@@ -322,25 +365,32 @@
                         </td>
 
                         <td>
-                          <%  if( allbooking[i].book_status == 'paid') { %>
-                          <button data-toggle="modal" data-id="<%=allbooking[i].booking_id %>" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">
+                          <% if( allbooking[i].book_status == 'paid') { %>
+                          <button
+                            data-toggle="modal"
+                            data-id="<%=allbooking[i].booking_id %>"
+                            class="open-AddBookDialog btn btn-primary"
+                            href="#addBookDialog"
+                          >
                             View
                           </button>
-                          <% }else if( allbooking[i].date_exit == null && allbooking[i].date_entry != null ){ %>
-                            <button data-toggle="modal" data-id="<%=allbooking[i].booking_id %>" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">
-                              View
-                            </button>
-                          <% }else{ %>
-                             Not Available
-                          <% } %>
+                          <% }else if( allbooking[i].date_exit == null &&
+                          allbooking[i].date_entry != null ){ %>
+                          <button
+                            data-toggle="modal"
+                            data-id="<%=allbooking[i].booking_id %>"
+                            class="open-AddBookDialog btn btn-primary"
+                            href="#addBookDialog"
+                          >
+                            View
+                          </button>
+                          <% }else{ %> Not Available <% } %>
                         </td>
                       </tr>
 
                       <% } %>
                     </tbody>
-                    <tfoot>
-                      
-                    </tfoot>
+                    <tfoot></tfoot>
                   </table>
                 </div>
               </div>
@@ -349,29 +399,31 @@
         </div>
       </div>
 
-      
       <div class="modal" id="addBookDialog">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">
-               QR Code
-              </h5>
+              <h5 class="modal-title">QR Code</h5>
             </div>
 
-              <div class="modal-body">
-                <input type="text" name="booking_id" id="booking_id" value="" hidden>
+            <div class="modal-body">
+              <input
+                type="text"
+                name="booking_id"
+                id="booking_id"
+                value=""
+                hidden
+              />
 
-                <div id="qrcode" >
-                  <center>
-                    <img
-                      src="images/thumbnail.png"
-                      style="width: 80%; height: 80%"
-                    />
-                  </center>
-                </div>
+              <div id="qrcode">
+                <center>
+                  <img
+                    src="images/thumbnail.png"
+                    style="width: 80%; height: 80%"
+                  />
+                </center>
               </div>
-
+            </div>
           </div>
         </div>
       </div>
@@ -384,8 +436,9 @@
     <script src="/js/script.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
-   <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/qr-clerk.js"> </script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/qr-clerk.js"></script>
+    <script src="/js/filter-clerk.js"></script>
 
     <script>
       $("#open-modal").click(function () {

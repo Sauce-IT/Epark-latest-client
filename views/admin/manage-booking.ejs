@@ -166,14 +166,22 @@
             <div class="card">
               <div class="card-header">
                 Data Table
-                <div style="float:left;width: 14%;">
-                  <h4>Filter<span><i class="bi bi-table me-2"></i></span></h4>
+                <div style="float: left; width: 14%">
+                  <h4>
+                    Filter<span><i class="bi bi-table me-2"></i></span>
+                  </h4>
                 </div>
-               
-                <button type="text" class="btn btn-primary"style="float:right;margin-left:6px;">Filter</button>
-              
-                <div style="float:right;width: 14%;margin-left:6px;">
-                  <select type="text"  id="status"  class="form-control">
+
+                <button
+                  type="text"
+                  class="btn btn-primary"
+                  style="float: right; margin-left: 6px"
+                >
+                  Filter
+                </button>
+
+                <div style="float: right; width: 14%; margin-left: 6px">
+                  <select type="text" id="status" class="form-control">
                     <option value="">All Status</option>
                     <option value="exited">Exited</option>
                     <option value="unpaid">Unpaid</option>
@@ -184,25 +192,35 @@
                     <option value="paid">Paid</option>
                   </select>
                 </div>
-                <div style="float:right;width: 14%;margin-left:6px;">
-                  <select type="text"  id="vehicle"  class="form-control">
-                    <option value="" >All Vehicle</option>
+                <div style="float: right; width: 14%; margin-left: 6px">
+                  <select type="text" id="vehicle" class="form-control">
+                    <option value="">All Vehicle</option>
                     <option value="Motorcycle">Motorcycle</option>
-                    <option value="Pickup truck">Pickup truck </option>
+                    <option value="Pickup truck">Pickup truck</option>
                     <option value="Sedan">Sedan</option>
                     <option value="SUV">SUV</option>
                     <option value="Van">Van</option>
                   </select>
                 </div>
-                <div style="float:right;width: 14%;margin-left:6px;">
-                  <input type="text" id="plate"  placeholder="Plate number"  class="form-control">
+                <div style="float: right; width: 14%; margin-left: 6px">
+                  <input
+                    type="text"
+                    id="plate"
+                    placeholder="Plate number"
+                    class="form-control"
+                  />
                 </div>
-                <div style="float:right;width: 14%;margin-left:6px;">
-                  <input type="text" id="name" placeholder="Name" class="form-control">
+                <div style="float: right; width: 14%; margin-left: 6px">
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Name"
+                    class="form-control"
+                  />
+                </div>
               </div>
-            </div>
               <div class="card-body">
-                <br>
+                <br />
 
                 <div class="table-responsive">
                   <table
@@ -225,74 +243,90 @@
                       </tr>
                     </thead>
                     <tbody id="datatable">
-								      <% for(var i = 0; i < allbooking.length; i++) {%>
+                      <% for(var i = 0; i < allbooking.length; i++) {%>
                       <!-- <input value="" hidden> -->
-                        <tr >
-                          <td><%= i + 1 %></td>
-                          <td><%= allbooking[i].slot_id %></td>
-                          <td><%= allbooking[i].user_name %></td>
-                          <td><%= allbooking[i].vehicle_type %></td>
-                          <td><%= allbooking[i].plate %></td>
-                          <td><%= allbooking[i].total_price %></td>
-                          <td><%= allbooking[i].user_mobile %></td>
-                          <td>
-                              <% if(allbooking[i].book_status == 'paid' && allbooking[i].date_entry == null){ %>
-                                 <p style="color:blue;"> No entry yet</p>
-                              <% }else if(allbooking[i].book_status == 'unpaid'){ %>
-                                 <p style="color:red;">Cannot enter yet</p>
-                              <% }else if(allbooking[i].book_status == 'expired'){ %>
-                                <p style="color:red;">No Entry</p>
-                              <% }else if(allbooking[i].book_status == 'cancel'){ %>
-                                <p style="color:red;">Cannot Enter</p>
-                              <% }else {%>
-                                <%= allbooking[i].date_entry  %>
-                              <% } %>
-                          </td>
-                          <td>
-                            <% if(allbooking[i].date_exit == null){ %>
-                             
-                                <p style="color:blue;">No Exit yet </p>
-                          
-                            <% }else { %>
-                              <!-- if rate type is hourly and user parking time is sobra mag rered to(naubos na english ko) -->
-                                <% if(allbooking[i].date_exit >= allbooking[i].park_hrs && allbooking[i].date_exit != null && allbooking[i].date_entry != null  ){ %>
-                                  <p style="color:red;"><%= allbooking[i].date_exit %></p>
-                                  <% }else{ %>
-                                    <%= allbooking[i].date_exit %>
-                                  <% }%> 
-                            <% }%>
-                          </td>
-                          <% if(allbooking[i].book_status == 'paid' && allbooking[i].date_entry == null) {%>
-                            <td>
-                            <a href="#" class="btn btn-warning" style="width: 100px;">Reserved</a>
-                            </td>
-                          <% }%>
-                          <% if( allbooking[i].book_status == 'unpaid') {%>
-                            <td>
-                            <a href="#" class="btn btn-dark" style="width: 100px;">Unpaid</a>
-                            </td>
-                          <% }%>
-                          <% if( allbooking[i].book_status == 'expired') {%>
-                            <td>
-                            <a href="#" class="btn btn-secondary" style="width: 100px;">Expired</a>
-                            </td>
-                          <% }%>
-                          <% if( allbooking[i].book_status == 'cancel') {%>
-                            <td>
-                            <a href="#" class="btn btn-danger">Canceled</a>
-                            </td>
-                          <% }%>
-                          <% if( allbooking[i].book_status == 'exited') {%>
-                            <td>
-                            <a href="#" class="btn btn-success" style="width: 100px;">Done</a>
-                            </td>
-                          <% }%>
-                          <% if( allbooking[i].book_status == 'paid' && allbooking[i].date_entry != null ) {%>
-                            <td>
-                            <a href="#" class="btn btn-primary">Occupied</a>
-                            </td>
-                          <% }%>
-                         
+                      <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= allbooking[i].slot_id %></td>
+                        <td><%= allbooking[i].user_name %></td>
+                        <td><%= allbooking[i].vehicle_type %></td>
+                        <td><%= allbooking[i].plate %></td>
+                        <td><%= allbooking[i].total_price %></td>
+                        <td><%= allbooking[i].user_mobile %></td>
+                        <td>
+                          <% if(allbooking[i].book_status == 'paid' &&
+                          allbooking[i].date_entry == null){ %>
+                          <p style="color: blue">No entry yet</p>
+                          <% }else if(allbooking[i].book_status == 'unpaid'){ %>
+                          <p style="color: red">Cannot enter yet</p>
+                          <% }else if(allbooking[i].book_status == 'expired'){
+                          %>
+                          <p style="color: red">No Entry</p>
+                          <% }else if(allbooking[i].book_status == 'cancel'){ %>
+                          <p style="color: red">Cannot Enter</p>
+                          <% }else {%> <%= allbooking[i].date_entry %> <% } %>
+                        </td>
+                        <td>
+                          <% if(allbooking[i].date_exit == null){ %>
+
+                          <p style="color: blue">No Exit yet</p>
+
+                          <% }else { %>
+                          <!-- if rate type is hourly and user parking time is sobra mag rered to(naubos na english ko) -->
+                          <% if(allbooking[i].date_exit >=
+                          allbooking[i].park_hrs && allbooking[i].date_exit !=
+                          null && allbooking[i].date_entry != null ){ %>
+                          <p style="color: red">
+                            <%= allbooking[i].date_exit %>
+                          </p>
+                          <% }else{ %> <%= allbooking[i].date_exit %> <% }%> <%
+                          }%>
+                        </td>
+                        <% if(allbooking[i].book_status == 'paid' &&
+                        allbooking[i].date_entry == null) {%>
+                        <td>
+                          <a
+                            href="#"
+                            class="btn btn-warning"
+                            style="width: 100px"
+                            >Reserved</a
+                          >
+                        </td>
+                        <% }%> <% if( allbooking[i].book_status == 'unpaid') {%>
+                        <td>
+                          <a href="#" class="btn btn-dark" style="width: 100px"
+                            >Unpaid</a
+                          >
+                        </td>
+                        <% }%> <% if( allbooking[i].book_status == 'expired')
+                        {%>
+                        <td>
+                          <a
+                            href="#"
+                            class="btn btn-secondary"
+                            style="width: 100px"
+                            >Expired</a
+                          >
+                        </td>
+                        <% }%> <% if( allbooking[i].book_status == 'cancel') {%>
+                        <td>
+                          <a href="#" class="btn btn-danger">Canceled</a>
+                        </td>
+                        <% }%> <% if( allbooking[i].book_status == 'exited') {%>
+                        <td>
+                          <a
+                            href="#"
+                            class="btn btn-success"
+                            style="width: 100px"
+                            >Done</a
+                          >
+                        </td>
+                        <% }%> <% if( allbooking[i].book_status == 'paid' &&
+                        allbooking[i].date_entry != null ) {%>
+                        <td>
+                          <a href="#" class="btn btn-primary">Occupied</a>
+                        </td>
+                        <% }%>
                       </tr>
 
                       <% } %>
@@ -304,10 +338,8 @@
           </div>
         </div>
       </div>
-
-
     </main>
-  
+
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
     <script src="/js/jquery-3.5.2.js"></script>
@@ -315,7 +347,6 @@
     <script src="/js/dataTables.bootstrap5.min.js"></script>
     <script src="/js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="/js/filter.js"> </script>
- 
+    <script src="/js/filter.js"></script>
   </body>
 </html>
