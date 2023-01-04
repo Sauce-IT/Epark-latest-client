@@ -28,6 +28,7 @@ $(document).ready(function () {
     }).then(async function (response) {
       const res = await response.json();
       data = res.payload;
+      console.log(res);
 
       var status;
       var entry;

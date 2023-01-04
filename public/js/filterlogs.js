@@ -9,6 +9,7 @@ $(document).ready(function(){
       var dateParts = date.split('/');
       var formattedDate = dateParts.join('-');
       console.log(formattedDate);
+
       var table;
       var data;
 
@@ -21,12 +22,13 @@ $(document).ready(function(){
           vehicle: vehicle,
           status: "exited",
           plate: plate,
-          date: formattedDate
+          date: ""
         }),
       }).then(async function (response) {
         const res = await response.json();
-          data = res.payload;
-          console.log(data[0]);
+          data = res.payload;          
+          console.log(res);
+
           var entry;
           var exit;
 
