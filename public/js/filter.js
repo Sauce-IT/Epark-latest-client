@@ -5,6 +5,11 @@ $(document).ready(function(){
       var status = document.getElementById("status").value;
       var vehicle = document.getElementById("vehicle").value;
       var plate = document.getElementById("plate").value;
+      var date = document.getElementById("date").value;
+      var dateParts = date.split('/');
+      var formattedDate = dateParts.join('-');
+      console.log(formattedDate);
+
       var table;
       var data;
       var i = 0;
@@ -17,7 +22,8 @@ $(document).ready(function(){
             name: name,
             vehicle: vehicle,
             status: status,
-            plate: plate
+            plate: plate,
+            date:formattedDate
           }),
         }).then(async function (response) {
           const res = await response.json();

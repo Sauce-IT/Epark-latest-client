@@ -2,8 +2,13 @@ $(document).ready(function () {
   $("button").click(function () {
     var name = document.getElementById("name").value;
     var status = document.getElementById("status").value;
-    // var vehicle = document.getElementById("vehicle").value;
+    var vehicle = document.getElementById("vehicle").value;
     var plate = document.getElementById("plate").value;
+    var date = document.getElementById("date").value;
+    var dateParts = date.split('/');
+    var formattedDate = dateParts.join('-');
+    console.log(formattedDate);
+
     var table;
     var data;
       var qrcode;
@@ -15,9 +20,10 @@ $(document).ready(function () {
       method: "POST",
       body: JSON.stringify({
         name: name,
-        vehicle: "",
+        vehicle: vehicle,
         status: status,
         plate: plate,
+        date: formattedDate
       }),
     }).then(async function (response) {
       const res = await response.json();

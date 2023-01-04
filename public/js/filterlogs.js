@@ -2,39 +2,37 @@ $(document).ready(function(){
     $("button").click(function(){
     
       var name = document.getElementById("name").value;
-      var status = document.getElementById("status").value;
+      // var status = document.getElementById("status").value;
       var vehicle = document.getElementById("vehicle").value;
       var plate = document.getElementById("plate").value;
+      var date = document.getElementById("date").value;
+      var dateParts = date.split('/');
+      var formattedDate = dateParts.join('-');
+      console.log(formattedDate);
       var table;
       var data;
-      var i = 0;
-      console.log(name,vehicle,status,plate);
+
       const url = "https://epark-project-api.herokuapp.com";
-        
+    
       fetch(url + "/filterData", {
-          method: "POST",
-          body: JSON.stringify({
-            name: name,
-            vehicle: vehicle,
-            status: status,
-            plate: plate,
-            logs: 'datalogs'
-          }),
-        }).then(async function (response) {
-          const res = await response.json();
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          vehicle: vehicle,
+          status: "exited",
+          plate: plate,
+          date: formattedDate
+        }),
+      }).then(async function (response) {
+        const res = await response.json();
           data = res.payload;
-          
+          console.log(data[0]);
           var entry;
           var exit;
 
           for (let index = 0; index < data.length; index++) {
-            const element = data[index];
-            console.log(element.user_name);
-            if(element.book_status == "done")
-            {
-
-                i += 1;
-
+              const element = data[index];
+               
               //entry
                 if(element.book_status == 'paid' && element.date_entry == null  || element.date_entry == "" || element.date_entry == undefined){ 
                   entry = "<p style='color:red;'> No entry yet</p>";
@@ -59,21 +57,17 @@ $(document).ready(function(){
                   }
 
                 table += " <tr > " +
-                    "<td>"+ i +"</td>" + 
-                    "<td>" +  element.slot_id +" </td>" +
                     "<td>" +  element.user_name+" </td>" +
                     "<td>" +  element.vehicle_type +"</td>" +
                     "<td>" +  element.plate+" </td>" +
-                    "<td>" +  element.total_price +"</td>" +
                     "<td>" +  element.user_mobile +" </td>" +
                     "<td>" + entry + "</td>" +
                     "<td>" + exit + "</td>" +
             "</tr>";
-          }
 
-        } 
-       document.getElementById("datatable").innerHTML = table;
-         
+          } ;
+        document.getElementById("datatable").innerHTML = table;
+          console.log(data);
         });
       });
      
