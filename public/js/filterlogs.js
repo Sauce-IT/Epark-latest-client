@@ -31,7 +31,7 @@ $(document).ready(function(){
 
           var entry;
           var exit;
-
+          
           for (let index = 0; index < data.length; index++) {
               const element = data[index];
                
@@ -68,8 +68,13 @@ $(document).ready(function(){
             "</tr>";
 
           } ;
-        document.getElementById("datatable").innerHTML = table;
-          console.log(data);
+          if(res.status.remarks == "failed")
+          {
+            document.getElementById("datatable").innerHTML = `<tr><td colspan="10"><center>No Data found</center></td></tr>`;
+  
+          }else{
+            document.getElementById("datatable").innerHTML = table.replace('undefined','');
+          }
         });
       });
      

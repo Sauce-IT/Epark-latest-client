@@ -1,4 +1,4 @@
-$(document).ready(function () {
+// $(document).ready(function () {
   $("button").click(function () {
     var name = document.getElementById("name").value;
     var status = document.getElementById("status").value;
@@ -9,7 +9,6 @@ $(document).ready(function () {
     var formattedDate = dateParts.join('-');
     console.log(formattedDate);
 
-    var table;
     var data;
     var qrcode;
     var i = 0;
@@ -30,6 +29,7 @@ $(document).ready(function () {
       data = res.payload;
       console.log(res);
 
+      var table;
       var status;
       var entry;
       var exit;
@@ -160,47 +160,71 @@ $(document).ready(function () {
         }else{
           qrcode = "Not Available"; 
         }
-     
+        if (data == undefined ||  data == null){qrcode
+          console.log("a");
+        }
+        if (status == undefined ||  status == null){entry
+          console.log("b");
+        }
+        if (exit == undefined ||  exit == null){
+          console.log("c");
+        }
+        
+        if (qrcode == undefined ||  qrcode == null){
+          console.log("e");
+        }
+        if (entry == undefined ||  entry == null){
+          console.log("f");
+        }
+        if (unpaid == undefined ||  unpaid == null){
+          console.log("g");
+        }
 
+      
         table +=
             " <tr > " +
-            "<td>" +
-            i +
-            "</td>" +
-            "<td>" +
-            element.slot_id +
-            " </td>" +
-            "<td>" +
-            element.user_name +
-            " </td>" +
-            "<td>" +
-            element.plate +
-            " </td>" +
-            "<td>" +
-            element.total_price +
-            "</td>" +
-            "<td>" +
-            element.user_mobile +
-            " </td>" +
-            "<td>" +
-            entry +
-            "</td>" +
-            "<td>" +
-            exit +
-            "</td>" +
-              "<td>" +
-                status +
-              "</td>" +
-            "<td>" +
-                unpaid +
-            "</td>" +
-              "<td>" +
-                 qrcode +
-              "</td>" +
+                "<td>" +
+                    i +
+                "</td>" +
+                "<td>" +
+                  element.slot_id +
+                " </td>" +
+                "<td>" +
+                  element.user_name +
+                " </td>" +
+                "<td>" +
+                  element.plate +
+                " </td>" +
+                "<td>" +
+                  element.total_price +
+                "</td>" +
+                "<td>" +
+                  element.user_mobile +
+                " </td>" +
+                "<td>" +
+                    entry +
+                "</td>" +
+                "<td>" +
+                    exit +
+                "</td>" +
+                "<td>" +
+                  status +
+                "</td>" +
+                "<td>" +
+                    unpaid +
+                "</td>" +
+                "<td>" +
+                  qrcode +
+                "</td>" +
             "</tr>";
+        
       }
-      document.getElementById("datatable2").innerHTML = table;
-      console.log(data);
+      if(res.status.remarks == "failed")
+        {
+          document.getElementById("datatable").innerHTML = `<tr><td colspan="10"><center>No Data found</center></td></tr>`;
+
+        }else{
+          document.getElementById("datatable").innerHTML = table.replace('undefined','');
+        }
     });
   });
-});
