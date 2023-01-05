@@ -11,20 +11,20 @@ $(document).ready(function () {
 
     var table;
     var data;
-      var qrcode;
-      var i = 0;
-    console.log(name, status, plate);
+    var qrcode;
+    var i = 0;
+    
     const url = "https://epark-project-api.herokuapp.com";
 
     fetch(url + "/filterData", {
       method: "POST",
-      body: JSON.stringify({
-        name: name,
-        vehicle: vehicle,
-        status: status,
-        plate: plate,
-        date: formattedDate
-      }),
+       body: JSON.stringify({
+            name: name,
+            vehicle: vehicle,
+            status: status,
+            plate: plate,
+            date:formattedDate
+          }),
     }).then(async function (response) {
       const res = await response.json();
       data = res.payload;
