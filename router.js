@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const slot = response.data.payload;
         sampledata = slot;
-        console.log("slot available today", slot);
+        
         res.render("index", { slots: sampledata });
       } else {
         sampledata = sampledata;
@@ -42,7 +42,7 @@ router.get("/getBooking", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const slot = response.data.payload;
         sampledata = slot;
-        console.log(sampledata);
+        
 
         res.render("getBooking_list", { slots: sampledata });
       } else {
@@ -88,7 +88,7 @@ router.get("/home", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const rate = response.data.payload;
         rates = rate;
-        console.log("Rate", rates);
+       
 
         // available today slot
         axios
@@ -96,9 +96,9 @@ router.get("/home", (req, res) => {
           .then((response) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
-              console.log(slot);
+             
               sampledata = slot;
-              console.log("slot available today", slot);
+              
 
               const data = JSON.stringify({
                 id: req.session.user.id,
@@ -112,7 +112,7 @@ router.get("/home", (req, res) => {
                     const book = response.data.payload;
                     userbook = book;
 
-                    console.log("book", book);
+                   
                     // check user booking
                     for (var i = 0; i < book.length; i++) {
                       //check if the book is either paid or it is stil no expired
@@ -140,9 +140,7 @@ router.get("/home", (req, res) => {
                             axios
                               .post(url + "/updateBookingstatus", data)
                               .then((response) => {
-                                console.log(
-                                  "update to expired success!!!!!!!!!!!!!!!!!"
-                                );
+                               
                               })
                               .catch(function (error) {
                                 res.redirect("/user-login");
@@ -164,7 +162,7 @@ router.get("/home", (req, res) => {
                           axios
                             .post(url + "/updateBookingstatus", data)
                             .then((response) => {
-                              console.log("Expired due to unpaid reservation");
+                             
                             })
                             .catch(function (error) {
                               res.redirect("/user-login");
@@ -180,7 +178,7 @@ router.get("/home", (req, res) => {
 
                   let message = req.session.errorReport;
                   req.session.errorReport = null;
-                  console.log(message);
+                 
 
                   // navigation
                   res.render("main", {
@@ -195,7 +193,7 @@ router.get("/home", (req, res) => {
                   let message = req.session.errorReport;
                   req.session.errorReport = null;
                   userbook = null;
-                  console.log(message);
+                 
                   // navigation
                   res.render("main", {
                     slots: sampledata,
@@ -244,7 +242,7 @@ router.get("/user-profile", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const book = response.data.payload;
         userbook = book;
-        console.log("book", book);
+      
       } else {
         userbook = null;
         console.log(error);
@@ -273,7 +271,7 @@ router.get("/forgotPass", (req, res) => {
 // --ok
 router.get("/admin-dashboard", (req, res) => {
   if (!req.session.user) return res.redirect("/admin-login");
-  console.log(req.session.user.position);
+ 
 
   //get parking slot
   axios
@@ -282,7 +280,6 @@ router.get("/admin-dashboard", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const slot = response.data.payload;
         userbook = slot;
-        console.log("slot", slot);
 
         // get all user
         axios
@@ -291,7 +288,7 @@ router.get("/admin-dashboard", (req, res) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
               sampledata = slot;
-              console.log("users", slot);
+            
 
               // available today slot
               axios
@@ -300,7 +297,7 @@ router.get("/admin-dashboard", (req, res) => {
                   if (response.data.status["remarks"] === "success") {
                     const slot = response.data.payload;
                     sampledata2 = slot;
-                    console.log("slot available today", slot);
+                   
                   } else {
                     // sampledata = sampledata;
                     res.redirect("/home");
@@ -338,11 +335,11 @@ router.get("/manage-parking", (req, res) => {
   axios
     .post(url + "/getRate", sampledata)
     .then((response) => {
-      // console.log(response);
+      
       if (response.data.status["remarks"] === "success") {
         const rate = response.data.payload;
         rates = rate;
-        console.log("Rate", rates);
+      
 
         // available today slot
         axios
@@ -351,7 +348,7 @@ router.get("/manage-parking", (req, res) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
               sampledata = slot;
-              console.log("slot available today", slot);
+             
             } else {
               sampledata = sampledata;
               res.redirect("/home");
@@ -409,7 +406,7 @@ router.get("/manage-booking", (req, res) => {
                 axios
                   .post(url + "/updateBookingstatus", data)
                   .then((response) => {
-                    console.log("update to expired success!!!!!!!!!!!!!!!!!");
+                   
                   })
                   .catch(function (error) {
                     res.redirect("/user-login");
@@ -430,7 +427,7 @@ router.get("/manage-booking", (req, res) => {
               axios
                 .post(url + "/updateBookingstatus", data)
                 .then((response) => {
-                  console.log("Expired due to unpaid reservation");
+                 
                 })
                 .catch(function (error) {
                   res.redirect("/user-login");
@@ -485,11 +482,11 @@ router.get("/user-info", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const book = response.data.payload;
         userbook = book;
-        console.log("book", book);
+        
       } else {
         userbook = sampledata;
         res.redirect("/home");
-        console.log(error);
+       
       }
 
       res.render("user-info", { employee: userbook });
@@ -506,11 +503,11 @@ router.get("/user-logs", (req, res) => {
   axios
     .post(url + "/getAllBookings")
     .then((response) => {
-      console.log("response", response);
+      
       if (response.data.status["remarks"] === "success") {
         const slot = response.data.payload;
         sampledata = slot;
-        console.log("slot available today", slot);
+       
       } else {
         sampledata = sampledata;
         res.redirect("/user-logs");
@@ -533,7 +530,7 @@ router.get("/settings", (req, res) => {
 // --ok
 router.get("/clerk-profile", (req, res) => {
   if (!req.session.user) return res.redirect("/admin-login");
-  console.log(req.session.user);
+  
   res.render("clerk-profile", { currentUsers: req.session.user });
 });
 
@@ -549,7 +546,7 @@ router.get("/manage-booking-clerk", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const book = response.data.payload;
         sampledata = book;
-        console.log(book);
+       
         for (var i = 0; i < book.length; i++) {
           //check if the book is either paid or it is stil no expired
           if (
@@ -576,7 +573,7 @@ router.get("/manage-booking-clerk", (req, res) => {
                 axios
                   .post(url + "/updateBookingstatus", data)
                   .then((response) => {
-                    console.log("update to expired success!!!!!!!!!!!!!!!!!");
+                   
                   })
                   .catch(function (error) {
                     res.redirect("/user-login");
@@ -597,7 +594,7 @@ router.get("/manage-booking-clerk", (req, res) => {
               axios
                 .post(url + "/updateBookingstatus", data)
                 .then((response) => {
-                  console.log("Expired due to unpaid reservation");
+                 
                 })
                 .catch(function (error) {
                   res.redirect("/user-login");
@@ -653,7 +650,7 @@ router.get("/manage-parking-clerk", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const rate = response.data.payload;
         rates = rate;
-        console.log("Rate", rates);
+       
 
         // available today slot
         axios
@@ -662,7 +659,7 @@ router.get("/manage-parking-clerk", (req, res) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
               sampledata = slot;
-              console.log("slot available today", slot);
+             
 
               res.render("manage-parking-clerk", {
                 parkings: sampledata,

@@ -149,7 +149,6 @@
           <div class="col-md-12 mb-3">
             <div class="card">
               <div class="card-header">
-               
                 <div style="float: left; width: 14%">
                   <h4>
                     Filter<span><i class="bi bi-table me-2"></i></span>
@@ -163,20 +162,19 @@
                 >
                   Filter
                 </button>
-                
-                <div style="float: right; width: 14%; margin-left: 6px">
+                <div style="float:right;width: 14%;margin-left:7px;">
                   <input type="date" id="date" style="float:right;width:105%;margin-right:6px;"class="form-control">
                 </div>
                 <div style="float: right; width: 14%; margin-left: 6px">
                   <select type="text" id="status" class="form-control">
                     <option value="">All Status</option>
-                    <option value="reserved">Reserved</option>
-                    <option value="entered">Entered</option>
-                    <option value="canceled">Canceled</option>
-                    <!-- <option value="exited">Exited</option>
+                    <option value="exited">Exited</option>
                     <option value="unpaid">Unpaid</option>
+                    <option value="entered">Entered</option>
                     <option value="expired">Expired</option>
-                    <option value="paid">Paid</option> -->
+                    <option value="canceled">Canceled</option>
+                    <option value="reserved">Reserved</option>
+                    <option value="paid">Paid</option>
                   </select>
                 </div>
                 <div style="float: right; width: 14%; margin-left: 6px">
@@ -218,6 +216,7 @@
                         <th>#</th>
                         <th>Slot</th>
                         <th>Name</th>
+                        <th>Vehicle</th>
                         <th>Plate</th>
                         <th>Price</th>
                         <th>Mobile</th>
@@ -235,6 +234,7 @@
                         <td><%= i + 1 %></td>
                         <td><%= allbooking[i].slot_id%></td>
                         <td><%= allbooking[i].user_name %></td>
+                        <td><%= allbooking[i].vehicle_type %></td>
                         <td><%= allbooking[i].plate %></td>
                         <td><%= allbooking[i].total_price %></td>
                         <td><%= allbooking[i].user_mobile %></td>

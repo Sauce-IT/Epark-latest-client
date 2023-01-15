@@ -12,7 +12,7 @@ router.post("/admin-login", (req, res) => {
   axios
     .post(url + "/login-admin", loginData)
     .then((response) => {
-      console.log(response);
+      
       if (response.data.status["remarks"] === "success") {
         req.session.user = response.data.payload;
         console.log(req.session.user);
@@ -109,7 +109,7 @@ router.post("/add-employee", (req, res) => {
   axios
     .post(url + "/register-admin", loginData)
     .then((response) => {
-      console.log(response);
+      
       if (response.data.status["remarks"] === "success") {
         res.redirect("/user-info");
       } else {
@@ -132,7 +132,7 @@ router.post("/edit-employee", (req, res) => {
   axios
     .post(url + "/updateClerk", loginData)
     .then((response) => {
-      console.log(response);
+      
       if (response.data.status["remarks"] === "success") {
         res.redirect("/user-info");
       } else {
@@ -201,7 +201,7 @@ router.post("/change-rate", (req, res) => {
   axios
     .post(url + "/updateRates", loginData)
     .then((response) => {
-      console.log(response);
+      
       if (response.data.status["remarks"] === "success") {
         res.redirect("/manage-parking");
       } else {
@@ -269,7 +269,6 @@ router.post("/user-login", (req, res) => {
   axios
     .post(url + "/login-user", loginData)
     .then((response) => {
-      console.log(response);
       if (response.data.status["remarks"] === "success") {
         req.session.user = response.data.payload;
         res.redirect("/home");
@@ -308,7 +307,7 @@ router.post("/register-user", (req, res) => {
   axios
     .post(url + "/register-user", loginData)
     .then((response) => {
-      console.log(response);
+      
       if (response.data.status["remarks"] === "success") {
         res.redirect("/user-login");
       } else {
@@ -464,7 +463,7 @@ router.post("/deleteAcc", (req, res) => {
         req.session = null;
         res.redirect("/user-login");
       } else {
-        console.log(response);
+        
         res.redirect("/user-profile");
       }
     })
@@ -487,7 +486,7 @@ router.post("/deleteAcc_admin", (req, res) => {
         res.redirect("/user-info");
       } else {
         // res.jsonp("response" + JSON.stringify(response.data));
-        console.log(response);
+        
         res.redirect("/user-login");
       }
     })

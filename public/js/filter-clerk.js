@@ -18,7 +18,7 @@
     fetch(url + "/filterData", {
       method: "POST",
        body: JSON.stringify({
-            name: name,
+             name: name,
             vehicle: vehicle,
             status: status,
             plate: plate,
@@ -191,6 +191,9 @@
                 " </td>" +
                 "<td>" +
                   element.user_name +
+                " </td>" +
+                "<td>" +
+                  element.vehicle_type +
                 " </td>" +
                 "<td>" +
                   element.plate +
