@@ -102,7 +102,7 @@ linechart.forEach(function (chart) {
       console.log("failed");
      
     } else {
-      
+      console.log(res);
       // const date1 = new Date();
       // const date2 = new Date(res.payload[0].date);
       // const diffTime = Math.abs(date2 - date1);
@@ -117,6 +117,7 @@ linechart.forEach(function (chart) {
         dates.push(date.getFullYear() + "-" + date.toLocaleString('default', { month: '2-digit' }) + "-" +  date.toLocaleString('default', { day: '2-digit' }) );
       
       }
+      
       for (let i = 0; i < res.payload.length; i++) {
 
           
@@ -127,7 +128,7 @@ linechart.forEach(function (chart) {
               data_exited.push(res.payload[i].count);
               label_exited.push(res.payload[i].date);
 
-            }else if(res.payload[i].book_status ==  "canceled" && res.payload[i].date == dates[index]){
+            }else if(res.payload[i].book_status ==  "cancel" && res.payload[i].date == dates[index]){
               
               data_canceled.push(res.payload[i].count);
               label_canceled.push(res.payload[i].date);
