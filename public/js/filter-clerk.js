@@ -180,7 +180,11 @@
           console.log("g");
         }
 
-      
+        var payment = element.paid_date;
+        if(element.paid_date == null){
+          payment = "No payment";
+        }
+
         table +=
             " <tr > " +
                 "<td>" +
@@ -204,6 +208,9 @@
                 "<td>" +
                   element.user_mobile +
                 " </td>" +
+                "<td>" +
+                payment +
+              " </td>" +
                 "<td>" +
                     entry +
                 "</td>" +

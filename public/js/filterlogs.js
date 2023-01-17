@@ -57,12 +57,17 @@ $(document).ready(function(){
                         exit = element.date_exit ;
                       } 
                   }
+                  var payment = element.paid_date;
+                  if(element.paid_date == null){
+                    payment = "No payment";
+                  }
 
                 table += " <tr > " +
                     "<td>" +  element.user_name+" </td>" +
                     "<td>" +  element.vehicle_type +"</td>" +
                     "<td>" +  element.plate+" </td>" +
                     "<td>" +  element.user_mobile +" </td>" +
+                    "<td>" +  payment +" </td>" +
                     "<td>" + entry + "</td>" +
                     "<td>" + exit + "</td>" +
             "</tr>";

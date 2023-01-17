@@ -79,7 +79,10 @@ $(document).ready(function(){
                     if( element.book_status == "paid" && element.date_entry != null ) {
                       status ="<a href='#' class='btn btn-primary'>Occupied</a>" ;
                   }
-
+                  var payment = element.paid_date;
+                  if(element.paid_date == null){
+                    payment = "No payment";
+                  }
                 table += " <tr > " +
                     "<td>"+ i +"</td>" + 
                     "<td>" +  element.slot_id +" </td>" +
@@ -88,6 +91,7 @@ $(document).ready(function(){
                     "<td>" +  element.plate+" </td>" +
                     "<td>" +  element.total_price +"</td>" +
                     "<td>" +  element.user_mobile +" </td>" +
+                    "<td>" +  payment +" </td>" +
                     "<td>" + entry + "</td>" +
                     "<td>" + exit + "</td>" +
                     "<td>" + status + "</td>" +
