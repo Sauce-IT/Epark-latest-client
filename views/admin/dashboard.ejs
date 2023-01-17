@@ -204,7 +204,7 @@
               <div class="card-body py-5">
                 Reserved Slot <% var total = 0 %> <% for(var i = 0; i <
                 available.length; i++) {%> <% if( available[i].Availability ==
-                'Reserved' ) {%> <% total = i + 1 %> <% }%> <% }%>
+                'Reserved' ) {%> <% total = total + 1 %> <% }%> <% }%>
 
                 <span style="float: right; font-size: 20px; padding: 5px"
                   >(<%= total %>)</span
