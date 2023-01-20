@@ -326,22 +326,16 @@
               />
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3" >
               <label class="form-label required">Total:</label>
 
-              <% if(rates[0].rate_type !== 'Fixed') {%>
+              
               <input
                 value="<%= userbook[i].total_price %>"
                 class="form-control"
                 disabled
               />
-              <% }else{ %>
-              <input
-                value="<%= rates[0].rate_price %>"
-                class="form-control"
-                disabled
-              />
-              <% } %>
+              
             </div>
             <% if(userbook[i].book_status == 'paid' ) { %> <%
             if(userbook[i].date_entry != null){ %>
@@ -529,11 +523,11 @@
               <div class="mb-3">
                 <label class="form-label required">Vehicle Type</label>
                 <select name="vehicle_type" id="vehicle_type">
-                  <option type="number" value="Motorcycle">Motorcycle</option>
-                  <option type="number" value="Sedan">Sedan</option>
-                  <option type="number" value="SUV">SUV</option>
-                  <option type="number" value="Van">Van</option>
-                  <option type="number" value="Pickup Truck">
+                  <option type="text" value="Motorcycle">Motorcycle</option>
+                  <option type="text" value="Sedan">Sedan</option>
+                  <option type="text" value="SUV">SUV</option>
+                  <option type="text" value="Van">Van</option>
+                  <option type="text" value="Pickup Truck">
                     Pickup Truck
                   </option>
                 </select>
@@ -541,36 +535,53 @@
 
               <div class="mb-3">
                 <label class="form-label required">Plate code</label>
+                <br>
                 <input
+                  style="width:30%; float:left;"
                   type="text"
                   name="plate"
-                  id="plate"
+                  id="text"
                   class="form-control"
+                  maxlength="2"
+                  pattern="[A-Za-z]*"
+                  oninput="checkValue(this)"
+                  onkeyup="this.value = this.value.toUpperCase();"
                   required
                 />
+                <input
+                  style="width:30%; float:left;margin-left:10px;"
+                  type="text"
+                  name="numb"
+                  id="numb"
+                  class="form-control"
+                  oninput="checkNum(this)"
+                  required
+                />
+                
               </div>
+              <br>
               <% for(var i = 0; i < rates.length; i++) {%>
               <div class="mb-3" id="Rating">
                 Rate:<input
                   name="rate"
                   id="rate"
                   type="number"
-                  value="<%= rates[i].rate_price %>"
+                  value="50"
                   class="form-control"
                   style="width: 40%"
                   disabled
                 />
-                Type:<input
+                <input
                   type="text"
                   value="<%= rates[i].rate_type %>"
                   class="form-control"
                   id="type"
                   style="width: 40%"
-                  disabled
+                  hidden
                 />
               </div>
 
-              <% if(rates[i].rate_type != 'Fixed') {%>
+              <!-- <% if(rates[i].rate_type != 'Fixed') {%>
               <div class="mb-3" id="hourly">
                 <label class="form-label required"
                   >How much time would you park?</label
@@ -612,12 +623,11 @@
                 style="width: 40%"
                 hidden
               />
-              <% }%>
+              <% }%> -->
 
-              <div class="mb-3">
+              <div class="mb-3" hidden>
                 <label class="form-label required">total</label>
 
-                <% if(rates[i].rate_type != 'Fixed') {%>
                 <input
                   type="number"
                   name="totalprice"
@@ -625,16 +635,7 @@
                   class="form-control"
                   disabled
                 />
-                <%}else{%>
-                <input
-                  type="number"
-                  name="totalprice"
-                  id="totalprice"
-                  class="form-control"
-                  value="<%= rates[i].rate_price %>"
-                  disabled
-                />
-                <%}%>
+              
               </div>
 
               <% }%>
@@ -994,5 +995,30 @@
       }
     </script>
     <% } %>
+
+    <script>
+      $("#vehicle_type").on("change", function() {
+        $("#text").val("");  
+        var selectedValue = $(this).val();
+
+          if(selectedValue != "Motorcycle"){
+            $("#text").attr("maxlength", 3);
+            $("#rate").val(100);
+          }else{
+            $("#text").attr("maxlength", 2);
+            $("#rate").val(50);
+          }
+
+        });
+        function checkValue(input) {
+          input.value = input.value.replace(/[^a-zA-Z]+/g, '');
+        }
+        function checkNum(input) {
+          input.value = input.value.replace(/[^0-9]+/g, '');
+        
+              input.value = input.value.substring(0, 5);
+            
+        }
+    </script>
   </body>
 </html>

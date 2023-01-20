@@ -331,19 +331,22 @@ router.post("/add-reservation", (req, res) => {
       if (response.data.status["remarks"] === "success") {
         const rate = response.data.payload;
         for (var i = 0; i < rate.length; i++) {
-          rates = rate[i].rate_price;
-          var t = req.body.time;
-          var total_price = rates * t;
-
+         
+          if(req.body.vehicle_type == "Motorcycle"){
+            rates = 50;
+          }else{
+            rates = 100;
+          }
           const data = JSON.stringify({
             vehicle_type: req.body.vehicle_type,
             slot_id: req.body.reserve_slot,
             user_id: req.session.user.id,
-            plate: req.body.plate,
+            plate: req.body.plate + " " + req.body.numb,
             hrs: req.body.time,
-            total_price: total_price,
-            rates: parseInt(rates),
+            total_price: rates,
+            rates: rates,
           });
+
           if (req.body.plate != null && req.body.plate != "") {
             axios
               .post(url + "/addReserve", data)
