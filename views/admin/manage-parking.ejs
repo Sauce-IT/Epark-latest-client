@@ -211,12 +211,12 @@
                 <div class="card-header">
                   <% for(var i = 0; i < rates.length; i++) {%>
   
-                    <form  id="addslot-form" action="/api/Add-slot" method="post">
-                    <span style="font-weight: bold">Rate: </span>
-                    <%= rates[i].rate_price %> pesos
-                    <span style="font-weight: bold">Type: </span>
-                    <%= rates[i].rate_type %>
-                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Change</a>
+                    <!-- <form  id="addslot-form" action="/api/Add-slot" method="post"> -->
+                    <!-- <span style="font-weight: bold">Rate: </span> -->
+                    <!-- <%= rates[i].rate_price %> pesos -->
+                    <!-- <span style="font-weight: bold">Type: </span> -->
+                    <!-- <%= rates[i].rate_type %> -->
+                    <!-- <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Change</a> -->
             
                       <!-- <button  href="javascript:{}" onclick="document.getElementById('addslot-form').submit();" class="btn btn-primary"  style="float: right;">Add</button> -->
                     </form>    
@@ -243,24 +243,28 @@
 
                     <tr>
                       <td><%= parkings[i].Slot_id %></td>								
-                      <td><%= parkings[i].Availability %></td>								
+                      <td>
+                        <%= parkings[i].Availability %>
+                      
+                      </td>								
                       <td><%= parkings[i].Status %></td>								
                     
-                      <% if(parkings[i].Availability != 'Maintenance' && parkings[i].Availability != 'Active' && parkings[i].Status == 'Available'){ %>
+                      <% if(parkings[i].Availability == 'Inactive' || parkings[i].Status == "Deactivated" ){ %>
                         <td>
                           <form  id="active-form" action="/api/changt-to-active" method="post">
-                              <input name="slot_id"  type="text" value="<%= parkings[i].Slot_id %>" hidden>
+                              <input id="slot_id_active" name="slot_id_active"  type="text" value="<%= parkings[i].Slot_id %>" hidden>
                               <button  href="javascript:void(0)" onclick="document.getElementById('active-form').submit();" class="btn btn-primary"  style="width: 85px;">Active</button>
                           </form>    
                         </td>
-                        						
-                      <% }else{ %>
+                      <%}else if(parkings[i].Status == 'Available' ){ %>		  	
                         <td>
-                          <form  id="active-form" action="/api/changt-to-inactive" method="post">
-                            <input  name="slot_id" type="text" value="<%= parkings[i].Slot_id %>" hidden>
-                            <button class="btn btn-danger" href="javascript:void(0)" onclick="document.getElementById('active-form').submit();" >Deactivate</button>
+                          <form  id="Inactive-form" action="/api/changt-to-inactive" method="post">
+                            <input  id="slot_id_inactive" name="slot_id_inactive" type="text" value="<%= parkings[i].Slot_id %>" hidden>
+                            <button class="btn btn-danger" href="javascript:void(0)" onclick="document.getElementById('Inactive-form').submit();" >Deactivate</button>
                           </form>    
                         </td>
+                      <% }else{ %>
+                        <td>  <%= parkings[i].Status %></td>
                       <% } %>
                     <% } %>
                     </tr>

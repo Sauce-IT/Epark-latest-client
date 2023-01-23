@@ -35,14 +35,15 @@ router.post("/admin-login", (req, res) => {
 // update availability
 router.post("/changt-to-inactive", (req, res) => {
   const loginData = JSON.stringify({
-    slot_id: req.body.slot_id,
+    slot_id: req.body.slot_id_inactive,
     availability: "Inactive",
   });
   axios
     .post(url + "/updatePark", loginData)
     .then((response) => {
-      if (response.data.status["remarks"] === "success") {
-        console.log(response.data);
+    console.log(response.data);
+    if (response.data.status["remarks"] === "success") {
+        
         res.redirect("/manage-parking");
       } else {
         res.redirect("/manage-parking");
@@ -55,9 +56,10 @@ router.post("/changt-to-inactive", (req, res) => {
 
 router.post("/changt-to-active", (req, res) => {
   const loginData = JSON.stringify({
-    slot_id: req.body.slot_id,
+    slot_id: req.body.slot_id_active,
     availability: "Active",
   });
+  
   axios
     .post(url + "/updatePark", loginData)
     .then((response) => {

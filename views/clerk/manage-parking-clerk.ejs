@@ -216,14 +216,11 @@
                       <% for(var i = 0; i < parkings.length; i++) {%>
 
                       <tr>
-                        <td><%= parkings[i].Slot_id %></td>
-                        <% if(parkings[i].Availability == 'Maintenance'){ %>
-                        <td>Inactive</td>
-                        <% }else { %>
-                        <td>Active</td>
-                        <% } %>
-                        <td><%= parkings[i].Availability %></td>
-                        <% } %>
+                            <td><%= parkings[i].Slot_id %></td>
+                            <td><%= parkings[i].Availability %></td>
+                            <td><%= parkings[i].Status %></td>
+                          
+                           <% } %>
                       </tr>
                     </tbody>
                     <tfoot>

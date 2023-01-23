@@ -694,7 +694,7 @@ router.get("/manage-parking-clerk", (req, res) => {
 
         // available today slot
         axios
-          .post(url + "/getTodayBookings_copy")
+          .post(url + "/allstatus")
           .then((response) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
