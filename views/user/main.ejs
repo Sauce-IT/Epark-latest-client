@@ -140,43 +140,52 @@
                 <% for(var i = 0; i < slots.length; i++) {%>
                 <tr>
                   <th scope="row"><%= slots[i].Slot_id %></th>
-                  <% if(slots[i].Availability == 'Available') {%>
+                  <% if(slots[i].Status == 'Available') {%>
                   <td>
                     <a
                       href="#"
                       class="btn btn-success disable__btn"
                       style="width: 130px"
-                      ><%= slots[i].Availability %></a
+                      ><%= slots[i].Status %></a
                     >
                   </td>
-                  <% }%> <% if(slots[i].Availability == 'Reserved') {%>
-                  <td>
-                    <a
-                      href="#"
-                      class="btn btn-warning disable__btn"
-                      style="width: 130px"
-                      ><%= slots[i].Availability %></a
-                    >
-                  </td>
-                  <% }%> <% if(slots[i].Availability == 'Occupied') {%>
-                  <td>
-                    <a
-                      href="#"
-                      class="btn btn-primary disable__btn"
-                      style="width: 130px"
-                      ><%= slots[i].Availability %></a
-                    >
-                  </td>
-                  <% }%> <% if(slots[i].Availability == 'Maintenance') {%>
+                  <% }%> <% if(slots[i].Status == 'Pending') {%>
                   <td>
                     <a
                       href="#"
                       class="btn btn-danger disable__btn"
                       style="width: 130px"
-                      ><%= slots[i].Availability %></a
+                      ><%= slots[i].Status %></a
                     >
                   </td>
-                  <% }%>
+                  <% }%> <% if(slots[i].Status == 'Occupied') {%>
+                  <td>
+                    <a
+                      href="#"
+                      class="btn btn-primary disable__btn"
+                      style="width: 130px"
+                      ><%= slots[i].Status %></a
+                    >
+                  </td>
+                  <% }%> <% if(slots[i].Status == 'Maintenance') {%>
+                  <td>
+                    <a
+                      href="#"
+                      class="btn btn-danger disable__btn"
+                      style="width: 130px"
+                      ><%= slots[i].Status %></a
+                    >
+                  </td>
+                  <% }%> <% if(slots[i].Status == 'Reserved') {%>
+                    <td>
+                      <a
+                        href="#"
+                        class="btn btn-warning disable__btn"
+                        style="width: 130px"
+                        ><%= slots[i].Status %></a
+                      >
+                    </td>
+                    <% }%>
                 </tr>
                 <% }%>
               </tbody>
@@ -646,7 +655,7 @@
                 >
                 <select name="reserve_slot" id="reserve_slot">
                   <% for(var i = 0; i < slots.length; i++) {%> <%
-                  if(slots[i].Availability == 'Available') {%>
+                  if(slots[i].Status == 'Available') {%>
                   <option><%= slots[i].Slot_id %></option>
                   <% }%> <% }%>
                 </select>

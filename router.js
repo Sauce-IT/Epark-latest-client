@@ -19,7 +19,7 @@ rates = [];
 // --ok
 router.get("/", (req, res) => {
   axios
-    .post(url + "/getTodayBookings")
+    .post(url + "/getTodayBookings_copy")
     .then((response) => {
       if (response.data.status["remarks"] === "success") {
         const slot = response.data.payload;
@@ -89,14 +89,14 @@ router.get("/home", (req, res) => {
         const rate = response.data.payload;
         rates = rate;
        
-
+        
         // available today slot
         axios
-          .post(url + "/getTodayBookings")
+          .post(url + "/allstatus")
           .then((response) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
-             
+            
               sampledata = slot;
               
 
@@ -292,24 +292,59 @@ router.get("/admin-dashboard", (req, res) => {
 
               // available today slot
               axios
-                .post(url + "/getTodayBookings", sampledata)
+                .post(url + "/getTodayBookings_copy", sampledata)
                 .then((response) => {
                   if (response.data.status["remarks"] === "success") {
                     const slot = response.data.payload;
                     sampledata2 = slot;
                    
+                    var pending = 0;
+                    var reserved = 0;
+
+                    axios
+                    .post(url + "/getAllBookings")
+                    .then((response) => {
+                      if (response.data.status["remarks"] === "success") {
+                        const data = response.data.payload;
+                       
+                        var currentDate = new Date();
+                        data.forEach(element => {
+                          if(element.date_created.slice(0,10) == currentDate.getFullYear() +"-"+ ('0' + (currentDate.getMonth()+1)).slice(-2) +"-"+ ('0' + currentDate.getDate()).slice(-2) ){
+                            if(element.paid_date == null && element.book_status == "unpaid"){
+                              pending = pending + 1;
+                            }
+
+                            if(element.paid_date != null){
+                              reserved = reserved + 1;
+                            }
+                          }
+
+                        });
+                        
+                        // getAllBookings
+                      } else {
+                        // sampledata = sampledata;
+                        res.redirect("/home");
+                        console.log(error);
+                      }
+    
+                      // navigation
+                      res.render("dashboard", {
+                        slots: userbook,
+                        users: sampledata,
+                        available: sampledata2,
+                        pending: pending,
+                        reserved:reserved
+                      });
+                    })
+                    
+                    // 
                   } else {
                     // sampledata = sampledata;
                     res.redirect("/home");
                     console.log(error);
                   }
 
-                  // navigation
-                  res.render("dashboard", {
-                    slots: userbook,
-                    users: sampledata,
-                    available: sampledata2,
-                  });
                 })
                 .catch(function (error) {});
             } else {
@@ -343,22 +378,58 @@ router.get("/manage-parking", (req, res) => {
 
         // available today slot
         axios
-          .post(url + "/getTodayBookings", sampledata)
+          .post(url + "/getTodayBookings_copy", sampledata)
           .then((response) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
               sampledata = slot;
+               newwData = [];
              
+              axios
+              .post(url + "/allstatus")
+              .then((response) => {
+               
+                if (response.data.status["remarks"] === "success") {
+                  const slot = response.data.payload;
+                  var added = {
+                    i: 10,
+                    Slot_id: 10,
+                    Availability: "Active",
+                    Status:"Available"
+                  };
+                  slot.push(added) 
+                  newwData = slot;
+                  
+                
+                } else {
+                  
+                  res.redirect("/home");
+                  console.log(error);
+                }
+                
+               
+
+                res.render("manage-parking", {
+                  parkings: sampledata,
+                  rates: rates,
+                  data: newwData.sort(function(a, b) {
+                        return a.Slot_id - b.Slot_id;
+                      })
+  
+                });
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+
+             
+
             } else {
               sampledata = sampledata;
               res.redirect("/home");
               console.log(error);
             }
-            // navigation
-            res.render("manage-parking", {
-              parkings: sampledata,
-              rates: rates,
-            });
+           
           })
           .catch(function (error) {});
       } else {
@@ -438,7 +509,7 @@ router.get("/manage-booking", (req, res) => {
 
         // available today slot
         axios
-          .post(url + "/getTodayBookings")
+          .post(url + "/getTodayBookings_copy")
           .then((response) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
@@ -605,7 +676,7 @@ router.get("/manage-booking-clerk", (req, res) => {
 
         // available today slot
         axios
-          .post(url + "/getTodayBookings")
+          .post(url + "/getTodayBookings_copy")
           .then((response) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
@@ -654,7 +725,7 @@ router.get("/manage-parking-clerk", (req, res) => {
 
         // available today slot
         axios
-          .post(url + "/getTodayBookings")
+          .post(url + "/getTodayBookings_copy")
           .then((response) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;

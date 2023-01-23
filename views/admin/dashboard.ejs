@@ -156,18 +156,18 @@
     <main class="mt-5 pt-3">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-15">
             <h4>Dashboard</h4>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3 mb-3">
+          <div class="col-md-2  mb-3">
             <div class="card bg-info text-dark h-100">
               <div class="card-body py-5">
                 Total Users <% i = 0 %> <% var total = 0 %> <% for(i = 0; i <
                 users.length; i++) {%> <% total = i + 1 %> <% }%>
-
-                <span style="float: right; font-size: 20px; padding: 5px"
+                <br>
+                <span style="float: left; font-size: 20px; padding: 5px"
                   >(<%= total %>)</span
                 >
               </div>
@@ -179,13 +179,13 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-2 mb-3">
             <div class="card bg-primary text-white h-100">
               <div class="card-body py-5">
                 Park Slot <% var total = 0 %> <% for(var i = 0; i <
                 slots?.length; i++) {%> <% total = i + 1 %> <% }%>
-
-                <span style="float: right; font-size: 20px; padding: 5px"
+                <br>
+                <span style="float: left; font-size: 20px; padding: 5px"
                   >(<%= total %>)</span
                 >
               </div>
@@ -198,16 +198,34 @@
               </div>
             </div>
           </div>
+          <div class="col-md-2 mb-3">
+            <div class="card bg-secondary text-white h-100">
+              <div class="card-body py-5">
+                Pending Payment:
+                <br>
+                <span style="float: left; font-size: 20px; padding: 5px"
+                  >(<%= pending %>)</span
+                >
+              </div>
+              <div class="card-footer d-flex">
+                <!-- View Details
 
-          <div class="col-md-3 mb-3">
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-3">
             <div class="card bg-warning text-dark h-100">
               <div class="card-body py-5">
-                Reserved Slot <% var total = 0 %> <% for(var i = 0; i <
+                Reserved Slot 
+                <!-- <% var total = 0 %> <% for(var i = 0; i <
                 available.length; i++) {%> <% if( available[i].Availability ==
-                'Reserved' ) {%> <% total = total + 1 %> <% }%> <% }%>
-
-                <span style="float: right; font-size: 20px; padding: 5px"
-                  >(<%= total %>)</span
+                'Reserved' ) {%> <% total = total + 1 %> <% }%> <% }%> -->
+                  <br>
+                <span style="float: left; font-size: 20px; padding: 5px"
+                  >(<%= reserved %>)</span
                 >
               </div>
               <div class="card-footer d-flex">
@@ -219,7 +237,7 @@
             </div>
           </div>
 
-          <div class="col-md-3 mb-3">
+          <div class="col-md-2 mb-3">
             <div class="card bg-success text-white h-100">
               <div class="card-body py-5">
                 Available Slot
@@ -228,8 +246,8 @@
                   <% if( available[i].Availability == 'Available' ) 
                   {%> <% total = total + 1; %> <% }%>
                  <% }%>
-
-                <span style="float: right; font-size: 20px; padding: 5px"
+                <br>
+                <span style="float: left; font-size: 20px; padding: 5px"
                   >(<%= total; %>)</span
                 >
               </div>
