@@ -253,8 +253,7 @@
                               <button  href="javascript:void(0)" onclick="document.getElementById('active-form').submit();" class="btn btn-primary"  style="width: 85px;">Active</button>
                           </form>    
                         </td>
-                        <% }else if(parkings[i].Status != 'Available') { %>
-                          <td><%= parkings[i].Status %></td>								
+                        						
                       <% }else{ %>
                         <td>
                           <form  id="active-form" action="/api/changt-to-inactive" method="post">
