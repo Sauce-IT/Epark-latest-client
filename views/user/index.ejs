@@ -124,6 +124,15 @@
                       ><%= slots[i].Availability %></a
                     >
                   </td>
+                  <%} if(slots[i].Availability == 'Pending') {%>
+                    <td>
+                      <a
+                        href="#"
+                        class="btn btn-danger disable__btn"
+                        style="width: 130px"
+                        ><%= slots[i].Availability %></a
+                      >
+                    </td>
                   <% }%> <% if(slots[i].Availability == 'Reserved') {%>
                   <td>
                     <a
@@ -151,7 +160,8 @@
                       ><%= slots[i].Availability %></a
                     >
                   </td>
-                  <% }%>
+                  
+                    <% }%>
                 </tr>
                 <% }%>
               </tbody>

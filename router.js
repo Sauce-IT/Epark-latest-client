@@ -378,49 +378,18 @@ router.get("/manage-parking", (req, res) => {
 
         // available today slot
         axios
-          .post(url + "/getTodayBookings_copy", sampledata)
+          .post(url + "/allstatus")
           .then((response) => {
             if (response.data.status["remarks"] === "success") {
               const slot = response.data.payload;
               sampledata = slot;
-               newwData = [];
+              
              
-              axios
-              .post(url + "/allstatus")
-              .then((response) => {
-               
-                if (response.data.status["remarks"] === "success") {
-                  const slot = response.data.payload;
-                  var added = {
-                    i: 10,
-                    Slot_id: 10,
-                    Availability: "Active",
-                    Status:"Available"
-                  };
-                  slot.push(added) 
-                  newwData = slot;
-                  
+               res.render("manage-parking", {
+                parkings: sampledata,
+                rates: rates,
                 
-                } else {
-                  
-                  res.redirect("/home");
-                  console.log(error);
-                }
-                
-               
-
-                res.render("manage-parking", {
-                  parkings: sampledata,
-                  rates: rates,
-                  data: newwData.sort(function(a, b) {
-                        return a.Slot_id - b.Slot_id;
-                      })
-  
                 });
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
 
              
 

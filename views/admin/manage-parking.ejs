@@ -239,32 +239,26 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% for(var i = 1; i < data.length; i++) {%>
+                    <% for(var i = 0; i < parkings.length; i++) {%>
 
                     <tr>
-                      <td><%= i %></td>								
-                      <td><%= data[i].Availability %></td>								
-                      <td><%= data[i].Status %></td>								
-                      <!-- <% if(data[i].Availability == 'Maintenance'){ %>
-                        <td>Inactive</td>
-                      <% }else { %>
-                        <td>Active</td>
-                      <% } %> -->
-                      <!-- <td><%= data[i].Availability %> </td> -->
-                      
-                      <% if(data[i].Availability != 'Maintenance' && data[i].Availability != 'Active' && data[i].Status == 'Available'){ %>
+                      <td><%= parkings[i].Slot_id %></td>								
+                      <td><%= parkings[i].Availability %></td>								
+                      <td><%= parkings[i].Status %></td>								
+                    
+                      <% if(parkings[i].Availability != 'Maintenance' && parkings[i].Availability != 'Active' && parkings[i].Status == 'Available'){ %>
                         <td>
                           <form  id="active-form" action="/api/changt-to-active" method="post">
-                              <input name="slot_id"  type="text" value="<%= data[i].Slot_id %>" hidden>
+                              <input name="slot_id"  type="text" value="<%= parkings[i].Slot_id %>" hidden>
                               <button  href="javascript:void(0)" onclick="document.getElementById('active-form').submit();" class="btn btn-primary"  style="width: 85px;">Active</button>
                           </form>    
                         </td>
-                        <% }else if(data[i].Status != 'Available') { %>
-                          <td><%= data[i].Status %></td>								
+                        <% }else if(parkings[i].Status != 'Available') { %>
+                          <td><%= parkings[i].Status %></td>								
                       <% }else{ %>
                         <td>
                           <form  id="active-form" action="/api/changt-to-inactive" method="post">
-                            <input  name="slot_id" type="text" value="<%= data[i].Slot_id %>" hidden>
+                            <input  name="slot_id" type="text" value="<%= parkings[i].Slot_id %>" hidden>
                             <button class="btn btn-danger" href="javascript:void(0)" onclick="document.getElementById('active-form').submit();" >Deactivate</button>
                           </form>    
                         </td>
