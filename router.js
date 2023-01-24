@@ -314,7 +314,7 @@ router.get("/admin-dashboard", (req, res) => {
                               pending = pending + 1;
                             }
 
-                            if(element.paid_date != null){
+                            if(element.paid_date != null && element.book_status == "paid" ){
                               reserved = reserved + 1;
                             }
                           }
